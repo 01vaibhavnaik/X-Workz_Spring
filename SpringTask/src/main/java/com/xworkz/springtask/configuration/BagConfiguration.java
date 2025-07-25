@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Configuration
-@ComponentScan(basePackages = "com.xworkz.springtask.internal")
+@ComponentScan(basePackages = "com.xworkz.springtask.bag")
 public class BagConfiguration {
 
     public BagConfiguration(){
