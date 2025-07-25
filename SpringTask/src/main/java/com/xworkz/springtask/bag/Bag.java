@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 public class Bag {
 
     public Bag(){
+
         System.out.println("Using Component Running Bag Class....");
     }
 }

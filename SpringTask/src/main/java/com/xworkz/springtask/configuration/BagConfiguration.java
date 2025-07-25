@@ -14,6 +14,7 @@ public class BagConfiguration {
 
     public BagConfiguration(){
         System.out.println("Using Configuration ComponentScan Running BagConfiguration Class....");
+        System.out.println("===================================================================");
     }
 
     @Bean
@@ -66,8 +67,11 @@ public class BagConfiguration {
     }
 
     @Bean
-    public int[][] arraysInt(){
+    public int[][] arraysIntBag(){
         System.out.println("Running Arrays Int in Bag Config Class...");
+        System.out.println("===================================================================");
         return  new int[][]{{2,4,5},{6,4,3},{9,4,2}};
+
     }
+
 }

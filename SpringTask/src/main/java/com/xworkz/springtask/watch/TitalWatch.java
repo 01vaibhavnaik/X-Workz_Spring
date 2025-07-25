@@ -1,11 +1,12 @@
-package com.xworkz.springtask.bag;
+package com.xworkz.springtask.watch;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class TrevelBag {
-    public TrevelBag(){
-        System.out.println("Using Component Running Travel Bag Class....");
+public class TitalWatch {
+
+    public TitalWatch() {
+        System.out.println("Running Component in Tital Watch Class...");
         System.out.println("===================================================================");
     }
 }

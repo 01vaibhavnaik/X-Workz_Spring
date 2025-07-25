@@ -1,11 +1,11 @@
-package com.xworkz.springtask.bag;
+package com.xworkz.springtask.shoe;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class TrevelBag {
-    public TrevelBag(){
-        System.out.println("Using Component Running Travel Bag Class....");
+public class WoodlandShoe {
+    public WoodlandShoe(){
+        System.out.println("Running Component in Wood Land Shoe Class...");
         System.out.println("===================================================================");
     }
 }
