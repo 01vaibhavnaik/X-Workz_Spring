@@ -11,7 +11,7 @@ public class AllConfigurationInit extends AbstractAnnotationConfigDispatcherServ
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class[]{BagConfiguration.class, ShoeConfiguration.class, WatchConfiguration.class, CarConfiguration.class,BikeConfiguration.class};
+        return new Class[]{BagConfiguration.class, ShoeConfiguration.class, WatchConfiguration.class, CarConfiguration.class,BikeConfiguration.class, ClothConfiguration.class};
     }
 
     @Override
