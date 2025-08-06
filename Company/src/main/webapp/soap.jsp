@@ -8,7 +8,11 @@
 <div class="d-flex justify-content-center align-items-center border rounded " style="height:100vh;">
 
     <form action="soap" method="post">
-        <input type="submit" value="Click"/>
+        <pre>
+            Soap Brand :<input type="text" name="soap"/>
+            Price:<input type="text" name="price"/>
+            <button type="submit">Submit</button>
+        </pre>
         <br>
         <button class="d-flex"><a href="index.jsp">Back</a></button>
     </form>
