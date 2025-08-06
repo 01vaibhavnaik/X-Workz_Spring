@@ -8,9 +8,14 @@
 <div class="d-flex justify-content-center align-items-center border rounded " style="height:100vh;">
 
     <form action="biryani" method="post">
-        <input type="submit" value="Click"/>
+        <pre>
+            Name :<input type="text" name="biryaniName"/>
+            Price:<input type="text" name="price"/>
+            <button type="submit">Submit</button>
+        </pre>
+
         <br>
-        <button class="d-flex"><a href="index.jsp">Back</a></button>
+        <button class="d-flex mt-5"><a href="index.jsp">Back</a></button>
     </form>
 </div>
 
