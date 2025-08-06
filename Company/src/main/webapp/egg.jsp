@@ -8,8 +8,11 @@
 <div class="d-flex justify-content-center align-items-center border rounded " style="height:100vh;">
 
     <form action="egg" method="post">
-        <input type="submit" value="Click"/>
-        <br>
+        <pre>
+            Egg Type :<input type="text" name="egg"/>
+            Price:<input type="text" name="price"/>
+            <button type="submit">Submit</button>
+        </pre>
         <button class="d-flex"><a href="index.jsp">Back</a></button>
     </form>
 </div>
