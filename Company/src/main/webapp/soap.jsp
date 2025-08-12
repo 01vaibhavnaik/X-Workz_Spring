@@ -5,19 +5,19 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-<h1 class="d-flex justify-content-center ">Soap</h1>
-<div class="d-flex justify-content-center align-items-center border rounded " style="height:100vh;">
-
-    <form action="soap" method="post">
-        <pre>
-            Soap Brand :<input type="text" name="soapName"/>
-            Price:<input type="text" name="price"/>
-            <img src="img.png"/>
-            <button type="submit">Submit</button>
-        </pre>
-        <br>
-        <h1>${msg}</h1>
-        <button class="d-flex"><a href="index.jsp">Back</a></button>
+<h1 class="d-flex justify-content-center align-items-center">Chutney</h1>
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+    <form class="w-50" action="soap" method="post">
+        <div class="mb-3">
+            <label for="nameId" class="form-label">Soap Brand </label>
+            <input type="text" class="form-control" id="nameId" name="name" placeholder="eg(Dettol)">
+        </div>
+        <div class="mb-3">
+            <label for="priceId" class="form-label">Soap Price</label>
+            <input type="number" class="form-control" id="priceId" name="price">
+        </div>
+        <button type="submit">Submit</button>
+        <button class="mt-5"><a href="index.jsp">Back</a></button>
     </form>
 </div>
 

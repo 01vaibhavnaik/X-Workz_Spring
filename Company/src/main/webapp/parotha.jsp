@@ -4,17 +4,19 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-<h1 class="d-flex justify-content-center">Parotha</h1>
-<div class="d-flex justify-content-center align-items-center border rounded " style="height:100vh;">
-
-    <form action="parotha" method="post">
-        <pre>
-            Protha Type :<input type="text" name="parotha"/>
-            Price:<input type="text" name="price"/>
-            <button type="submit">Submit</button>
-        </pre>
-        <br>
-        <button class="d-flex"><a href="index.jsp">Back</a></button>
+<h1 class="d-flex justify-content-center align-items-center">Chutney</h1>
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+    <form class="w-50" action="parotha" method="post">
+        <div class="mb-3">
+            <label for="nameId" class="form-label">Parotha </label>
+            <input type="text" class="form-control" id="nameId" name="name" placeholder="eg(Aloo-Parotha)">
+        </div>
+        <div class="mb-3">
+            <label for="priceId" class="form-label">Parotha Price</label>
+            <input type="number" class="form-control" id="priceId" name="price">
+        </div>
+        <button type="submit">Submit</button>
+        <button class="mt-5"><a href="index.jsp">Back</a></button>
     </form>
 </div>
 

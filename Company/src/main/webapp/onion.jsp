@@ -4,17 +4,19 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-<h1 class="d-flex justify-content-center ">Onion</h1>
-<div class="d-flex justify-content-center align-items-center border rounded " style="height:100vh;">
-
-    <form action="onion" method="post">
-        <pre>
-            Onion Type :<input type="text" name="onion"/>
-            Price:<input type="text" name="price"/>
-            <button type="submit">Submit</button>
-        </pre>
-        <br>
-        <button class="d-flex"><a href="index.jsp">Back</a></button>
+<h1 class="d-flex justify-content-center align-items-center">Chutney</h1>
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+    <form class="w-50" action="onion" method="post">
+        <div class="mb-3">
+            <label for="nameId" class="form-label">Onion </label>
+            <input type="text" class="form-control" id="nameId" name="name" placeholder="eg(type)">
+        </div>
+        <div class="mb-3">
+            <label for="priceId" class="form-label">Onion Price</label>
+            <input type="number" class="form-control" id="priceId" name="price">
+        </div>
+        <button type="submit">Submit</button>
+        <button class="mt-5"><a href="index.jsp">Back</a></button>
     </form>
 </div>
 

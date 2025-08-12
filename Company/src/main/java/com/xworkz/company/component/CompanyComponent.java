@@ -49,54 +49,57 @@ public class CompanyComponent {
         return "ChappalResult";
     }
     @RequestMapping("/chutney")
-    public String getChutney(ChutneyDTO chutneyDTO){
+    public String getChutney(ChutneyDTO chutneyDTO,Model model){
         System.out.println("Name :"+chutneyDTO.getName()+"Price :"+chutneyDTO.getPrice());
-        System.out.println("Eating Chutney..");
-        return "chutney";
+        model.addAttribute("chutneydto",chutneyDTO);
+        return "ChutneyResult";
     }
     @RequestMapping("/curry")
-    public String getCurry( CurryDTO curry){
+    public String getCurry( CurryDTO curry,Model model){
         System.out.println("Name :"+curry.getName()+"Price :"+curry.getPrice());
         System.out.println("Eating Curry..");
-        return "curry";
+        model.addAttribute("currydto",curry);
+        return "CurryResult";
     }
     @RequestMapping("/egg")
-    public String getEgg(EggDTO egg){
+    public String getEgg(EggDTO egg,Model model){
         System.out.println("Name :"+egg.getName()+"Price :"+egg.getPrice());
-        System.out.println("Eating Egg..");
-        return "egg";
+        model.addAttribute("eggdto",egg);
+        return "EggResult";
     }
     @RequestMapping("/milk")
-    public String getMilk(MilkDTO milk){
+    public String getMilk(MilkDTO milk,Model model){
         System.out.println("Name :"+milk.getName()+"Price :"+milk.getPrice());
-
         System.out.println("Eating Milk..");
-        return "milk";
+        model.addAttribute("milkdto",milk);
+        return "MilkResult";
     }
     @RequestMapping("/onion")
-    public String getOnion(OnionDTO onion){
+    public String getOnion(OnionDTO onion,Model model){
         System.out.println("Name :"+onion.getName()+"Price :"+onion.getPrice());
-        System.out.println("Eating Onion..");
-        return "onion";
+        model.addAttribute("oniondto",onion);
+        return "OnionResult";
     }
     @RequestMapping("/parotha")
-    public String getParotha(ParothaDTO parothaDTO){
+    public String getParotha(ParothaDTO parothaDTO,Model model){
         System.out.println("Name :"+parothaDTO.getName()+"Price :"+parothaDTO.getPrice());
-
         System.out.println("Eating parotha..");
-        return "parotha";
+        model.addAttribute("parothadto",parothaDTO);
+        return "ParothaResult";
     }
     @RequestMapping("/shoe")
-    public String getShoe(ShoeDTO shoeDTO){
+    public String getShoe(ShoeDTO shoeDTO,Model model){
         System.out.println("Name :"+shoeDTO.getName()+"Price :"+shoeDTO.getPrice());
         System.out.println("Waering Shoe..");
-        return "shoe";
+        model.addAttribute("shoedto",shoeDTO);
+        return "ShoeResult";
     }
     @RequestMapping("/socks")
-    public String getSocks(SocksDTO socksDTO){
+    public String getSocks(SocksDTO socksDTO,Model model){
         System.out.println("Name :"+socksDTO.getName()+"Price :"+socksDTO.getPrice());
         System.out.println("Waering Socks..");
-        return "socks";
+        model.addAttribute("socksdto",socksDTO);
+        return "SocksResult";
     }
 
 
