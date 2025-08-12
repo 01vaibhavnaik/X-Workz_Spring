@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class ChapppalDTO {
 
 
-        private String name;
+        private String chappalName;
         private int price;
     }
 

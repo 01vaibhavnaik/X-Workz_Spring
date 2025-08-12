@@ -28,10 +28,11 @@ public class CompanyComponent {
         return "BottleResult";
     }
     @RequestMapping("/butter")
-    public String getButter(ButterDTO butterDTO){
+    public String getButter(ButterDTO butterDTO,Model model){
         System.out.println("Name :"+butterDTO.getButterName()+"Price :"+butterDTO.getPrice());
         System.out.println("Appling Butter On Bread....");
-        return "butter";
+        model.addAttribute("butterdto",butterDTO);
+        return "ButterResult";
     }
     @RequestMapping("/biryani")
     public String getBiryani(BiryanyDTO biryanyDTO,Model model){
@@ -41,11 +42,11 @@ public class CompanyComponent {
         return "BiryaniResult";
     }
     @RequestMapping("/chappal")
-    public String getChappal(ChapppalDTO chapppalDTO){
-        System.out.println("Name :"+chapppalDTO.getName()+"Price :"+chapppalDTO.getPrice());
-
+    public String getChappal(ChapppalDTO chapppalDTO,Model model){
+        System.out.println("Name :"+chapppalDTO.getChappalName()+"Price :"+chapppalDTO.getPrice());
         System.out.println("Wearing Chappal..");
-        return "chappal";
+        model.addAttribute("chappaldto",chapppalDTO);
+        return "ChappalResult";
     }
     @RequestMapping("/chutney")
     public String getChutney(ChutneyDTO chutneyDTO){
