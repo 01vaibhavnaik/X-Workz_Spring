@@ -14,25 +14,25 @@ public class CompanyComponent {
 
     @RequestMapping("/soap")
     public String getSoap(SoapDTO soapDTO){
-        System.out.println("Name :"+soapDTO.getName()+"Name :"+soapDTO.getPrice());
+        System.out.println("Name :"+soapDTO.getSoapName()+"Name :"+soapDTO.getPrice());
         System.out.println("Soap is Appling On Body...");
-        return "soap.jsp";
+        return "soap";
     }
     @RequestMapping("/bottle")
     public String getBottle(BottleDTO bottleDTO){
-        System.out.println("Name :"+bottleDTO.getName()+"Price :"+bottleDTO.getPrice());
+        System.out.println("Name :"+bottleDTO.getBottleName()+"Price :"+bottleDTO.getPrice());
         System.out.println("Filling Water In Bottle....");
-        return "bottle.jsp";
+        return "bottle";
     }
     @RequestMapping("/butter")
     public String getButter(ButterDTO butterDTO){
-        System.out.println("Name :"+butterDTO.getName()+"Price :"+butterDTO.getPrice());
+        System.out.println("Name :"+butterDTO.getButterName()+"Price :"+butterDTO.getPrice());
         System.out.println("Appling Butter On Bread....");
         return "butter.jsp";
     }
     @RequestMapping("/biryani")
     public String getBiryani(BiryanyDTO biryanyDTO){
-        System.out.println("Name :"+biryanyDTO.getName()+"Price :"+biryanyDTO.getPrice());
+        System.out.println("Name :"+biryanyDTO.getBiryaniName()+"Price :"+biryanyDTO.getPrice());
         System.out.println("Eating Biryani..");
         return "biryani.jsp";
     }

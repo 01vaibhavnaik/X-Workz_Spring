@@ -9,11 +9,13 @@
 
     <form action="soap" method="post">
         <pre>
-            Soap Brand :<input type="text" name="soap"/>
+            Soap Brand :<input type="text" name="soapName"/>
             Price:<input type="text" name="price"/>
+            <img src="img.png"/>
             <button type="submit">Submit</button>
         </pre>
         <br>
+
         <button class="d-flex"><a href="index.jsp">Back</a></button>
     </form>
 </div>

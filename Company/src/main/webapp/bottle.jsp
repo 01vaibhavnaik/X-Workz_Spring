@@ -9,7 +9,7 @@
 
     <form action="bottle" method="post">
         <pre>
-            Bottle brand :<input type="text" name="botttleName"/>
+            Bottle brand :<input type="text" name="bottleName"/>
             Price:<input type="text" name="price"/>
             <button type="submit">Submit</button>
         </pre>

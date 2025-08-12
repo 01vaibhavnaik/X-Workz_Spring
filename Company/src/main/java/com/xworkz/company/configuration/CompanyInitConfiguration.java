@@ -16,7 +16,7 @@ public class CompanyInitConfiguration extends AbstractAnnotationConfigDispatcher
 
     @Override
     protected String[] getServletMappings() {
-        return new String[]{"/biryani","/bottle","/butter","/chappal","/chutney","/curry","/curry","/egg","/milk","/onion","/parotha","/shoe","/soap","/socks"};
+        return new String[]{"/"};
     }
 
 

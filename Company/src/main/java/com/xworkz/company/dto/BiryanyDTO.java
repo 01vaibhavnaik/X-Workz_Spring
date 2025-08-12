@@ -6,6 +6,6 @@ import lombok.*;
 @NoArgsConstructor
 @Data
 public class BiryanyDTO {
-    private String name;
+    private String biryaniName;
     private int price;
 }

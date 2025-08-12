@@ -6,6 +6,6 @@ import lombok.*;
 @NoArgsConstructor
 @Data
 public class ButterDTO {
-    private String name;
+    private String butterName;
     private int price;
 }

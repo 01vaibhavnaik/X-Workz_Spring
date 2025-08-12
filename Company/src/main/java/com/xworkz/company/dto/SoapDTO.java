@@ -6,6 +6,6 @@ import lombok.*;
 @NoArgsConstructor
 @Data
 public class SoapDTO {
-    private String name;
+    private String soapName;
     private int price;
 }
