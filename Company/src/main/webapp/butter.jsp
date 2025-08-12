@@ -9,7 +9,7 @@
     <form class="w-50" action="butter" method="post">
         <div class="mb-3">
             <label for="nameId" class="form-label">Butter Name</label>
-            <input type="text" class="form-control" id="nameId" name="butterName" placeholder="eg(Water Bottle,Gym Bottle)">
+            <input type="text" class="form-control" id="nameId" name="butterName" placeholder="eg(type)">
         </div>
         <div class="mb-3">
             <label for="priceId" class="form-label">Butter Price</label>
