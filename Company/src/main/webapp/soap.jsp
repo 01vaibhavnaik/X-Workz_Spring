@@ -1,3 +1,4 @@
+<%@ page isELIgnored = "false" %>
 <html>
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -15,7 +16,7 @@
             <button type="submit">Submit</button>
         </pre>
         <br>
-
+        <h1>${msg}</h1>
         <button class="d-flex"><a href="index.jsp">Back</a></button>
     </form>
 </div>
