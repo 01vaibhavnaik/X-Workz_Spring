@@ -10,7 +10,8 @@
         Apply Form
     </button>
     <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="PersonForm.jsp">Person Details</a></li>
+        <li><a class="dropdown-item" href="PersonForm.jsp">Person Form</a></li>
+        <li><a class="dropdown-item" href="LoanForm.jsp">Loan Form</a></li>
     </ul>
 </div>
 </body>

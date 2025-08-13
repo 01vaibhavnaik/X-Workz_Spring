@@ -10,9 +10,8 @@ public class FormConfigurationInit extends AbstractAnnotationConfigDispatcherSer
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class[]{FormConfiguration.class};
+        return new Class[]{FormConfiguration.class, LoanFormConfiguration.class};
     }
-
     @Override
     protected String[] getServletMappings() {
         return new String[]{"/"};
