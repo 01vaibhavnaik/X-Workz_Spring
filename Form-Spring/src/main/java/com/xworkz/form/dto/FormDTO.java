@@ -1,5 +1,6 @@
 package com.xworkz.form.dto;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,4 +14,5 @@ public class FormDTO {
     private int age;
     private String address;
     private int salary;
+
 }
