@@ -15,5 +15,6 @@
 <h3>Loan Amount Required :${loandetail.amount}</p></h3>
 <h3>Repayment Period (Months/Years): :${loandetail.repayment}</p></h3>
 
+
 </body>
 </html>

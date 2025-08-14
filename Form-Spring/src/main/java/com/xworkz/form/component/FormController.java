@@ -20,10 +20,10 @@ public class FormController implements WebMvcConfigurer {
     public String getForm(FormDTO formDTO, Model model) {
         System.out.println("Name :" + formDTO.getName() + "\nEmail :" + formDTO.getEmail() + "\nAge :" + formDTO.getAge() + "\nAddress :" + formDTO.getAddress() + "\nSalary :" + formDTO.getSalary());
         model.addAttribute("persondetail", formDTO);
-
-       // FormService formService = new FormServiceImpl();
         formService.validateAndSave(formDTO);
         return "PersonResult";
     }
+
+
 
 }

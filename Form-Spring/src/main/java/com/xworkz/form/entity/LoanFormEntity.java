@@ -10,6 +10,8 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "loanform")
+@NamedQuery(name = "GetAllLoanDetail",query = "select e from LoanFormEntity e ")
+//@NamedQuery(name = "DeleteById",query = "delete e from LoanFormEntity e where id =:ID")
 public class LoanFormEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

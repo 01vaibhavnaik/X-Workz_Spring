@@ -18,12 +18,10 @@ private  FormRepo formRepo;
         System.out.println(formDTO.toString());
         FormEntity formEntity = new FormEntity();
         formEntity.setName(formDTO.getName());
-formEntity.setAge(formDTO.getAge());
-formEntity.setEmail(formDTO.getEmail());
-formEntity.setAddress(formDTO.getAddress());
-formEntity.setSalary(formDTO.getSalary());
-
-
+        formEntity.setAge(formDTO.getAge());
+        formEntity.setEmail(formDTO.getEmail());
+        formEntity.setAddress(formDTO.getAddress());
+        formEntity.setSalary(formDTO.getSalary());
            formRepo.save(formEntity);
         return false;
     }

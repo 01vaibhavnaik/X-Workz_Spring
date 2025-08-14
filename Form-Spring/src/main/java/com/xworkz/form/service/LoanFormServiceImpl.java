@@ -4,8 +4,12 @@ import com.xworkz.form.dto.LoanFormDTO;
 import com.xworkz.form.entity.FormEntity;
 import com.xworkz.form.entity.LoanFormEntity;
 import com.xworkz.form.repositiory.LoanFormRepository;
+import com.xworkz.form.repositiory.LoanFormRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Collections;
+import java.util.List;
 
 @Service
 public class LoanFormServiceImpl implements  LoanFormService{
@@ -29,5 +33,16 @@ public class LoanFormServiceImpl implements  LoanFormService{
         loanFormRepository.save(loanFormEntity);
 
         return false;
+    }
+
+    @Override
+    public List<LoanFormEntity> getAll() {
+        return new LoanFormRepositoryImpl().getAll();
+    }
+
+    @Override
+    public boolean deleteById(int id) {
+        loanFormRepository.deleteById(id);
+        return false ;
     }
 }
