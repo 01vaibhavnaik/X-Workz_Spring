@@ -11,7 +11,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "loanform")
 @NamedQuery(name = "GetAllLoanDetail",query = "select e from LoanFormEntity e ")
-//@NamedQuery(name = "DeleteById",query = "delete e from LoanFormEntity e where id =:ID")
+@NamedQuery(name = "UpdateAddressByID",query = "update LoanFormEntity e set e.address =: Address WHERE e.id =: Id")
+@NamedQuery(name = "UpdateByName",query = "update LoanFormEntity e set e.age =:Age,e.address =:Address,e.email=:Email  WHERE name =: Name")
+@NamedQuery(name = "GetDetailByAge",query = "select e from LoanFormEntity e where e.age between 21 and 29")
+@NamedQuery(name = "getEmailAddressByName",query = "select e from LoanFormEntity e where name=: Name")
 public class LoanFormEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
