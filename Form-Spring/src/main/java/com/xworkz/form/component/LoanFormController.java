@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -29,12 +31,36 @@ private LoanFormService loanFormService;
         List<LoanFormEntity> list=loanFormService.getAll();
         modelAndView.addObject("loandto",list);
         modelAndView.setViewName("GetLoanFormDetail");
-        System.out.println(list);
         return modelAndView;
     }
      @RequestMapping("/deleteById")
      public String deleteById(int id) {
         loanFormService.deleteById(id);
         return "redirect:/getAllLoanDetails";
+    }
+    @RequestMapping("/updateAddressById")
+    public String updateAddressById(int id,String address) {
+        loanFormService.updateAddressById(id,address);
+        return "redirect:/getAllLoanDetails";
+    }
+
+    @RequestMapping("/updateAAEByName")
+    public String updateAAEByName(String name,int age,String address,String email) {
+        loanFormService.updateAAEByName(name,age,address,email);
+        return "redirect:/getAllLoanDetails";
+    }
+    @RequestMapping("/getAgeBetLoanDetails")
+    public ModelAndView getAgeBetLoanDetails(ModelAndView modelAndView) {
+        List<LoanFormEntity> list= loanFormService.getAgeBetLoanDetails();
+        modelAndView.addObject("loandto",list);
+        modelAndView.setViewName("GetLoanFormDetail");
+        return modelAndView;
+    }
+    @RequestMapping("/getEmailAddressByName")
+    public ModelAndView getEmailAddressByName(String name,ModelAndView modelAndView) {
+        LoanFormEntity loanFormEntity=loanFormService.getEmailAddressByName(name);
+        modelAndView.addObject("loandto",loanFormEntity);
+        modelAndView.setViewName("ResultByName");
+        return modelAndView;
     }
 }

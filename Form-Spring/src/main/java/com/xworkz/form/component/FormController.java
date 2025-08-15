@@ -24,6 +24,4 @@ public class FormController implements WebMvcConfigurer {
         return "PersonResult";
     }
 
-
-
 }
