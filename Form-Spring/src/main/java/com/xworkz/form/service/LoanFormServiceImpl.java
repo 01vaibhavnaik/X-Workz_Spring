@@ -45,4 +45,24 @@ public class LoanFormServiceImpl implements  LoanFormService{
         loanFormRepository.deleteById(id);
         return false ;
     }
+
+    @Override
+    public boolean updateAddressById(int id,String address) {
+        return new LoanFormRepositoryImpl().updateAddressById(id,address);
+    }
+
+    @Override
+    public boolean updateAAEByName(String name, int age, String address, String email) {
+        return new LoanFormRepositoryImpl().updateAAEByName(name,age,address,email);
+    }
+
+    @Override
+    public List<LoanFormEntity> getAgeBetLoanDetails() {
+        return new LoanFormRepositoryImpl().getAgeBetLoanDetails();
+    }
+
+    @Override
+    public LoanFormEntity getEmailAddressByName(String name) {
+        return new LoanFormRepositoryImpl().getEmailAddressByName(name);
+    }
 }
