@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,19 +24,13 @@ public class RajajinagarController {
     private ShopService shopService;
 
     @RequestMapping("/shop")
-    public ModelAndView getShop(@Valid ShopDTO shopDTO, BindingResult bindingResult, ModelAndView model) {
+    public ModelAndView getShop(@Valid @ModelAttribute("shopdto") ShopDTO shopDTO, BindingResult bindingResult, ModelAndView model) {
 
         if (bindingResult.hasErrors()) {
-            System.err.println("Invalid data...");
-            List<ObjectError> objectErrors = bindingResult.getAllErrors();
-            for (ObjectError objectError : objectErrors) {
-                System.err.println(objectError.getDefaultMessage());
-            }
-//            model.addObject("shopdto", shopDTO);
-            model.addObject("errors", objectErrors);
-            model.setViewName("ShopResult");
+            model.setViewName("Shop");
             return model;
         }
+
         shopService.save(shopDTO);
         model.addObject("shopdto", shopDTO);
         model.setViewName("ShopResult");
