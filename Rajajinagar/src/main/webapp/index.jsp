@@ -12,6 +12,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="nav">
             <li class="nav-item "><a class="nav-link text-light" href="Shop.jsp">Shop</a></li>
+            <li class="nav-item "><a class="nav-link text-light" href="Flower.jsp">Flower</a></li>
 
         </ul>
     </div>
