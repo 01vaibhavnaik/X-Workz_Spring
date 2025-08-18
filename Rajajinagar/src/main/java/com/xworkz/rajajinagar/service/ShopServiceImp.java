@@ -3,7 +3,7 @@ package com.xworkz.rajajinagar.service;
 import com.xworkz.rajajinagar.dto.ShopDTO;
 import com.xworkz.rajajinagar.entity.ShopEntity;
 import com.xworkz.rajajinagar.repository.ShopRepository;
-import com.xworkz.rajajinagar.repository.ShopRepositoryImp;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
