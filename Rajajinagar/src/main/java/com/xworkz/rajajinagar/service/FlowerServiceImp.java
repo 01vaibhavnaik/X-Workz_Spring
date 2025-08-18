@@ -7,14 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+
 public class FlowerServiceImp implements FlowerService{
+
     @Autowired
     private FlowerRepo flowerRepo;
+
     @Override
     public boolean saveFlower(FlowerDTO flowerDTO) {
         FlowerEntity flowerEntity=new FlowerEntity();
         flowerEntity.setFlowername(flowerDTO.getFlowername());
-        flowerEntity.setFlowerprice(flowerEntity.getFlowerprice());
+        flowerEntity.setFlowerprice(flowerDTO.getFlowerprice());
         flowerEntity.setFlowercolor(flowerDTO.getFlowercolor());
 
         flowerRepo.saveFlower(flowerEntity);

@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@NonNull
+
 public class FlowerDTO {
     @Size(min = 4,max = 15,message = "Letter Should be minimum 4 and max 15 ")
     private String flowername;
