@@ -1,6 +1,6 @@
-<%@ page isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<html>
+<%@ page isELIgnored="false" %>
+<html >
 <head>
     <title>Shop</title>
 </head>
@@ -12,6 +12,9 @@
 <h5>${shopdto.shophno}</h5>
 <h5>${shopdto.openingtime}</h5>
 <h5>${shopdto.closingtime}</h5>
+<c:forEach var="error" items="${errors}">
+    <p>${error.defaultMessage}</p>
+</c:forEach>
 
 </body>
 </html>
