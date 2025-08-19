@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.util.List;
-import java.util.Objects;
 
 @Controller
 @RequestMapping("/")
@@ -32,10 +30,13 @@ public class XworkzController {
         return modelAndView;
     }
 
-//    @RequestMapping("/signin")
-//    public ModelAndView getdetail(String name, String password,ModelAndView modelAndView){
-//        boolean result=signUpService.getSignin(name,password);
-//        return modelAndView;
-//    }
+    @RequestMapping("/signin")
+    public ModelAndView getdetail(String email, String password,ModelAndView modelAndView) {
+        boolean result = signUpService.getSignin(email, password);
+        modelAndView.addObject("success", result);
+        modelAndView.setViewName("SignInSuccessfull");
+        return modelAndView;
+        }
+
 
 }
