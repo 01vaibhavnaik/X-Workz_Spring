@@ -96,15 +96,12 @@
 
 </div>
 <div>
-
     <c:if test="${not empty errors}">
         <c:forEach var="error" items="${errors}">
             <p>${error.defaultMessage}</p>
         </c:forEach>
     </c:if>
 </div>
-
-
-<script src="signUp.js"></script>
 </body>
+<script src="signUp.js"></script>
 </html>

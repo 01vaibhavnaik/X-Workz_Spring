@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "xworkzsignup")
-@NamedQuery(name="SignIn",query = "select e from SignUpEntity e where name=:Name")
+@NamedQuery(name="signIn",query = "select e from SignUpEntity e where email=:email")
 public class SignUpEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

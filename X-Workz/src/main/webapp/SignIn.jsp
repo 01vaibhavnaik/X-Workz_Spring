@@ -1,6 +1,9 @@
+<%@ page isELIgnored="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <title>Log In</title>
 </head>
@@ -25,10 +28,14 @@
                 <input type="email" class="form-control" id="emailId" name="email" required
                        placeholder="Enter your email">
             </div>
-            <div class="mb-3">
-                <label for="passwordId" class="form-label text-light">Password</label>
-                <input type="password" class="form-control" id="passwordId" name="password" required
-                       placeholder="Enter password">
+            <div class="mb-3 position-relative">
+                <label for="passwordId" class="form-label" >Password</label>
+                <div class="input-group">
+                    <input type="password" class="form-control" name="password" id="passwordId" required  placeholder="Enter the password">
+                    <button type="button" onclick="passwordToggle()">
+                        <i class="fa fa-eye"></i>
+                    </button>
+                </div>
             </div>
             <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="rememberId" name="remember">
@@ -49,4 +56,5 @@
 
 
 </body>
+<script src="signUp.js"></script>
 </html>
