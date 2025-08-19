@@ -97,10 +97,10 @@
 </div>
 <div>
 
-    <c:if test="not empty ${errors}">
-<c:forEach var="error" items="${}">
-    <p>${error.defaultmessage}</p>
-</c:forEach>
+    <c:if test="${not empty errors}">
+        <c:forEach var="error" items="${errors}">
+            <p>${error.defaultMessage}</p>
+        </c:forEach>
     </c:if>
 </div>
 
