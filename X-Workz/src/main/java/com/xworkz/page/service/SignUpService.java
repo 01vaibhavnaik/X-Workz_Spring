@@ -5,5 +5,5 @@ import com.xworkz.page.dto.SignUpDTO;
 public interface SignUpService {
 
     boolean getSignUp(SignUpDTO signUpDTO);
-//    boolean getSignin(String name, String password);
+    boolean getSignin(String email,String password);
 }

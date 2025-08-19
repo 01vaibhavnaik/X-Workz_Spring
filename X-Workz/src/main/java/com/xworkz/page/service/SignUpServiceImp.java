@@ -32,10 +32,12 @@ public class SignUpServiceImp implements SignUpService{
         return false;
     }
 
-//    @Override
-//    public boolean getSignin(String name, String password) {
-//        return new SignUpRepositoryImp().getSignIn(name);
-//    }
-
-
+    @Override
+    public boolean getSignin(String email,String password) {
+        System.out.println("Email :"+email);
+        SignUpEntity sign = signUpRepository.getSignIn(email);
+        if(email.equals(sign.getEmail()) && bCryptPasswordEncoder.matches(password, sign.getPassword()));{
+            return true;
+        }
+    }
 }
