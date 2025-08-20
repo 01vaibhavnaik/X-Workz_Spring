@@ -18,7 +18,6 @@ public class XworkzController {
 
     @RequestMapping("/signup")
     public ModelAndView getdetail(@Valid SignUpDTO signUpDTO, BindingResult bindingResult,ModelAndView modelAndView){
-
         if(bindingResult.hasErrors()) {
             modelAndView.addObject("errors", bindingResult.getAllErrors());
             modelAndView.setViewName("SignIn");
@@ -33,10 +32,23 @@ public class XworkzController {
     @RequestMapping("/signin")
     public ModelAndView getdetail(String email, String password,ModelAndView modelAndView) {
         boolean result = signUpService.getSignin(email, password);
-        modelAndView.addObject("success", result);
-        modelAndView.setViewName("SignInSuccessfull");
+        if(!result)
+        modelAndView.addObject("result",result);
+        modelAndView.setViewName("SignIn");
         return modelAndView;
         }
+
+
+    @RequestMapping("/forgotpass")
+    public ModelAndView forgotpass(String email, String password, ModelAndView modelAndView) {
+        boolean results = signUpService.forgotpass(email, password);
+        if (!results)
+            modelAndView.addObject("results",results);
+            modelAndView.setViewName("SignInSuccessfull");
+            return modelAndView;
+        }
+
+
 
 
 }

@@ -6,4 +6,5 @@ public interface SignUpService {
 
     boolean getSignUp(SignUpDTO signUpDTO);
     boolean getSignin(String email,String password);
+    boolean forgotpass(String email,String password);
 }

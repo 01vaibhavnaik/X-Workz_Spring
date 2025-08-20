@@ -5,15 +5,14 @@
     <title>SignUpSuccess</title>
 </head>
 <body>
-<c:if test="${not empty success}">
-    <c:choose>
-        <c:when test="${success==true}">
-            <p class="text-success">Login Sucessfull</p>
-        </c:when>
-        <c:otherwise>
-            <p class="text-warning">Invalid Credentials</p>
-        </c:otherwise>
-    </c:choose>
-</c:if>
+<p>Result = ${result}</p>
+<c:choose>
+    <c:when test="${results}">
+        <p class="text-success">Not Update</p>
+    </c:when>
+    <c:otherwise>
+        <p class="text-warning">Update</p>
+    </c:otherwise>
+</c:choose>
 </body>
 </html>

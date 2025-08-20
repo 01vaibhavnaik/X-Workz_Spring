@@ -44,12 +44,18 @@ public class SignUpServiceImp implements SignUpService {
 
     @Override
     public boolean getSignin(String email, String password) {
-        System.out.println("Email :" + email);
         SignUpEntity sign = signUpRepository.getSignIn(email);
-        if (email.equals(sign.getEmail()) && bCryptPasswordEncoder.matches(password, sign.getPassword())) ;
-        {
+        if (sign != null && bCryptPasswordEncoder.matches(password, sign.getPassword())) {
             return true;
         }
+    return false;
+    }
+
+    @Override
+    public boolean forgotpass(String email, String password) {
+        String pas= bCryptPasswordEncoder.encode(password);
+        signUpRepository.forgotpass(email,pas);
+        return true;
     }
 
     private void setEmail(String email) {

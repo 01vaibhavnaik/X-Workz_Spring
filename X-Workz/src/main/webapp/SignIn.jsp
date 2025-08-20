@@ -29,32 +29,37 @@
                        placeholder="Enter your email">
             </div>
             <div class="mb-3 position-relative">
-                <label for="passwordId" class="form-label" >Password</label>
+                <label for="passwordId" class="form-label text-light" >Password</label>
                 <div class="input-group">
                     <input type="password" class="form-control" name="password" id="passwordId" required  placeholder="Enter the password">
                     <button type="button" onclick="passwordToggle()">
                         <i class="fa fa-eye"></i>
                     </button>
                 </div>
+                <span  class="text-primary ms-2 mt-1"><a href="ForgotPassword.jsp" class="text-decoration-none"> Forgot Password ?</a></span>
             </div>
             <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="rememberId" name="remember">
                 <label class="form-check-label text-light" for="rememberId">Remember me</label>
             </div>
-
-
             <div class="d-grid ">
                 <button type="submit" class="btn btn-outline-danger ">Log In</button>
             </div>
         </form>
-
         <div class="text-center text-light mt-3">
             <small>Don't have an account? <a class="text-danger" href="SignUp.jsp">Sign Up </a></small>
         </div>
     </div>
 </div>
+<c:choose>
+    <c:when test="${result==false}">
+        <p class="text-warning">Invalid Credentials</p>
+    </c:when>
+    <c:otherwise>
+        <p class="text-success">Login Successful</p>
 
-
+    </c:otherwise>
+</c:choose>
 </body>
 <script src="signUp.js"></script>
 </html>

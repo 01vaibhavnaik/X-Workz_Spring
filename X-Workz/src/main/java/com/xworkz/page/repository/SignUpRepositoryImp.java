@@ -42,8 +42,6 @@ public class SignUpRepositoryImp implements SignUpRepository{
         EntityManager entityManager=null;
         EntityTransaction entityTransaction=null;
         SignUpEntity sign = new SignUpEntity();
-        System.out.println("Email Repo:"+email);
-        System.out.println("============>"+sign);
         try {
             entityManager = entityManagerFactory.createEntityManager();
             entityTransaction = entityManager.getTransaction();
@@ -53,7 +51,7 @@ public class SignUpRepositoryImp implements SignUpRepository{
             Query query = entityManager.createNamedQuery("signIn");
             query.setParameter("email", email);
            sign = (SignUpEntity) query.getSingleResult();
-            System.out.println("---------"+sign);
+
 
             entityTransaction.commit();
         } catch (Exception e) {
@@ -67,6 +65,43 @@ public class SignUpRepositoryImp implements SignUpRepository{
             }
         }
         return sign;
+    }
+
+    @Override
+    public boolean forgotpass(String email, String pass) {
+
+        EntityManager entityManager=null;
+        EntityTransaction entityTransaction=null;
+        SignUpEntity sign=new SignUpEntity();
+        try{
+            entityManager=entityManagerFactory.createEntityManager();
+            entityTransaction=entityManager.getTransaction();
+            entityTransaction.begin();
+            Query query = entityManager.createNamedQuery("signIn");
+            query.setParameter("email", email);
+            sign = (SignUpEntity) query.getSingleResult();
+//            SignUpEntity sign=getSignIn(email);
+            if(email.equals(sign.getEmail())) {
+                System.out.println("InRepoC"+email+"1"+pass);
+            Query query1=entityManager.createNamedQuery("UpdatePass");
+            query1.setParameter("email",email);
+            query1.setParameter("password",pass);
+            query1.executeUpdate();
+            entityTransaction.commit();
+            return true;
+            }
+
+
+        }catch (Exception e){
+            assert entityTransaction != null;
+            if(entityTransaction.isActive()){
+                entityTransaction.rollback();
+            }
+            e.printStackTrace();
+        }finally {
+            entityManager.close();
+        }
+        return false;
     }
 
 
