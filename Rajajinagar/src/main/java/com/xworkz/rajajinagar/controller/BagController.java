@@ -14,8 +14,8 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/")
 public class BagController {
-    @Autowired
-    BagService bagService;
+        @Autowired
+          BagService bagService;
 
 
     @RequestMapping("/bag")
@@ -25,9 +25,10 @@ public class BagController {
             modelAndView.setViewName("BagResult");
             return modelAndView;
         }
+
         bagService.getBag(bagDTO);
         modelAndView.addObject("bagdto",bagDTO);
-        modelAndView.setViewName("BagResult");
+        modelAndView.setViewName("Bag");
         return modelAndView;
     }
 }

@@ -16,7 +16,6 @@ public class BagEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column
-    @Size(min = 4,max = 15,message = "Letter Should be minimum 4 and max 15 ")
     private String bagname;
     private int bagprice;
     private String bagcolor;
