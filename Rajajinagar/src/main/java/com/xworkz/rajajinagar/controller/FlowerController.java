@@ -23,8 +23,7 @@ public class FlowerController {
     public ModelAndView getFlower(@Valid FlowerDTO flowerDTO,BindingResult bindingResult , ModelAndView modelAndView ){
 
         if(bindingResult.hasErrors()){
-
-            modelAndView.addObject("error",bindingResult.getAllErrors());
+            modelAndView.addObject("flowererrors",bindingResult.getAllErrors());
             modelAndView.setViewName("FlowerResult");
             return  modelAndView;
         }
