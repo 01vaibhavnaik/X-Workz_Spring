@@ -17,7 +17,7 @@ public class XworkzController {
     SignUpService signUpService;
 
     @RequestMapping("/signup")
-    public ModelAndView getXworkz(@Valid SignUpDTO signUpDTO, BindingResult bindingResult,ModelAndView modelAndView){
+    public ModelAndView getdetail(@Valid SignUpDTO signUpDTO, BindingResult bindingResult,ModelAndView modelAndView){
 
         if(bindingResult.hasErrors()) {
             modelAndView.addObject("errors", bindingResult.getAllErrors());
