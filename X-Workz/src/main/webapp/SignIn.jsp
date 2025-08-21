@@ -51,15 +51,13 @@
         </div>
     </div>
 </div>
-<c:choose>
-    <c:when test="${result==false}">
-        <p class="text-warning">Invalid Credentials</p>
-    </c:when>
-    <c:otherwise>
-        <p class="text-success">Login Successful</p>
 
-    </c:otherwise>
-</c:choose>
+<c:if test="${not empty errors}">
+        <c:forEach var="err" items="${errors}">
+            <p>${err.defaultMessage}</p>
+        </c:forEach>
+
+</c:if>
 </body>
 <script src="signUp.js"></script>
 </html>

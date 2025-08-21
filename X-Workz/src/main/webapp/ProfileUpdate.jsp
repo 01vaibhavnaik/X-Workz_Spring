@@ -43,41 +43,18 @@
                 <span id="ageError" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label for="genderId" class="form-label">Gender</label>
-                <select class="form-select" aria-label="Default select example" onchange="validateGender()" name="gender" id="genderId" value="${dto.gender}"  readonly >
+                <label for="genderId" class="form-label text-light">Gender</label>
+                <select class="form-select "  onchange="validateGender()" name="gender" id="genderId" value="${dto.gender}"  readonly >
                     <option selected disabled value="${dto.gender}">${dto.gender}</option>
                 </select>
                 <input type="hidden" name="gender" value="${dto.gender}">
-
-
             </div>
             <div class="mb-3">
                 <label for="addressId" class="form-label text-light">Address</label>
                 <input type="text" class="form-control" id="addressId" name="address" value="${dto.address}" required
                        placeholder="Enter your name">
             </div>
-            <div class="mb-3 position-relative">
-                <label for="passwordId" class="form-label" >Password</label>
-                <div class="input-group">
-                    <input type="password" class="form-control" oninput="validatePassword()" name="password" id="passwordId" required  placeholder="Enter the password">
-                    <button type="button" onclick="passwordToggle()">
-                        <i class="fa fa-eye"></i>
-                    </button>
-                </div>
-                <span id="passwordErrorId" class="text-danger"></span>
-            </div>
 
-            <div class="mb-3 position-relative">
-                <label for="confirmId" class="form-label text-light">Confirm Password</label>
-                <div class="input-group">
-                    <input type="password" class="form-control" oninput="validateCPassword()" id="confirmId" name="confirm" required
-                           placeholder="Re-enter password">
-                    <button type="button" onclick="CpasswordToggle()">
-                        <i class="fa fa-eye"></i>
-                    </button>
-                </div>
-                <span id="CpasswordErrorId" class="text-danger"></span>
-            </div>
             <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="termsId" required>
                 <label class="form-check-label text-light" for="termsId">I agree to the terms & conditions</label>
