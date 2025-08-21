@@ -5,14 +5,11 @@
     <title>SignUpSuccess</title>
 </head>
 <body>
-<p>Result = ${result}</p>
+
 <c:choose>
-    <c:when test="${results}">
-        <p class="text-success">Not Update</p>
+    <c:when test="${result==null}">
+        <p class="text-warning">Invalid Credentials</p>
     </c:when>
-    <c:otherwise>
-        <p class="text-warning">Update</p>
-    </c:otherwise>
 </c:choose>
 </body>
 </html>
