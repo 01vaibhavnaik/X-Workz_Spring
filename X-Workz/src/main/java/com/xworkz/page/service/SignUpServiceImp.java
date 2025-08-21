@@ -24,11 +24,13 @@ public class SignUpServiceImp implements SignUpService {
     SignUpRepository signUpRepository;
 
 
+
     BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+
 
     @Override
     public boolean getSignUp(SignUpDTO signUpDTO) {
-        SignUpEntity signUpEntity = new SignUpEntity();
+        SignUpEntity signUpEntity=new SignUpEntity();
         signUpEntity.setName(signUpDTO.getName());
         signUpEntity.setEmail(signUpDTO.getEmail());
         setEmail(signUpEntity.getEmail());
@@ -43,12 +45,18 @@ public class SignUpServiceImp implements SignUpService {
     }
 
     @Override
-    public boolean getSignin(String email, String password) {
+    public SignUpDTO getSignin(String email, String password) {
         SignUpEntity sign = signUpRepository.getSignIn(email);
-        if (sign != null && bCryptPasswordEncoder.matches(password, sign.getPassword())) {
-            return true;
+        SignUpDTO signUpDTO=new SignUpDTO();
+        signUpDTO.setEmail(sign.getEmail());
+        signUpDTO.setName(sign.getName());
+        signUpDTO.setAddress(sign.getAddress());
+        signUpDTO.setAge(sign.getAge());
+        signUpDTO.setGender(sign.getGender());
+        if (sign !=null && bCryptPasswordEncoder.matches(password, sign.getPassword())) {
+            return signUpDTO;
         }
-    return false;
+    return null;
     }
 
     @Override
@@ -56,6 +64,18 @@ public class SignUpServiceImp implements SignUpService {
         String pas= bCryptPasswordEncoder.encode(password);
         signUpRepository.forgotpass(email,pas);
         return true;
+    }
+
+    @Override
+    public boolean updateprofile(SignUpDTO signUpDTO) {
+        SignUpEntity signUpEntity=new SignUpEntity();
+        signUpEntity.setName(signUpDTO.getName());
+        signUpEntity.setEmail(signUpDTO.getEmail());
+        signUpEntity.setAge(signUpDTO.getAge());
+        signUpEntity.setGender(signUpDTO.getGender());
+        signUpEntity.setAddress(signUpDTO.getAddress());
+        signUpRepository.updateprofile(signUpEntity);
+        return false;
     }
 
     private void setEmail(String email) {

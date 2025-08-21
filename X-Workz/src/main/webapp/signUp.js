@@ -1,7 +1,7 @@
 function validateName(){
 let userName=document.getElementById("nameId").value;
 let nameError=document.getElementById("nameErrorId");
-if(userName.length<3 || userName.length>10){
+if(userName.length<3 || userName.length>26){
 nameError.innerText="Name length between 3 and 10";
 }else{
 nameError.textContent="";

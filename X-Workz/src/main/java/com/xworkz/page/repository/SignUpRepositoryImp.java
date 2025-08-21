@@ -104,6 +104,7 @@ public class SignUpRepositoryImp implements SignUpRepository{
 
     @Override
     public boolean updateprofile(SignUpEntity entity) {
+
         EntityManager entityManager=null;
         EntityTransaction entityTransaction=null;
         try{
@@ -111,7 +112,12 @@ public class SignUpRepositoryImp implements SignUpRepository{
             entityManager=entityManagerFactory.createEntityManager();
             entityTransaction=entityManager.getTransaction();
             entityTransaction.begin();
-
+            Query query = entityManager.createNamedQuery("UpdateDetail");
+            query.setParameter("email", entity.getEmail());
+            query.setParameter("name", entity.getName());
+            query.setParameter("age", entity.getAge());
+            query.setParameter("address", entity.getAddress());
+            query.executeUpdate();
             entityTransaction.commit();
         }catch (Exception e){
             assert entityTransaction != null;

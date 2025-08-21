@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Table(name = "xworkzsignup")
 @NamedQuery(name="signIn",query = "select e from SignUpEntity e where email=:email")
 @NamedQuery(name = "UpdatePass",query = "update SignUpEntity e set e.password=:password where email =:email")
-//@NamedQuery(name = "UpdatePass",query = "update SignUpEntity e set e.name=:name,e.age=:age,e.address=:address where email =:email")
+@NamedQuery(name = "UpdateDetail",query = "update SignUpEntity e set e.name=:name,e.age=:age,e.address=:address where email =:email")
 public class SignUpEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
