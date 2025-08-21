@@ -50,8 +50,7 @@ public class SignUpRepositoryImp implements SignUpRepository{
 
             Query query = entityManager.createNamedQuery("signIn");
             query.setParameter("email", email);
-           sign = (SignUpEntity) query.getSingleResult();
-
+            sign = (SignUpEntity) query.getSingleResult();
 
             entityTransaction.commit();
         } catch (Exception e) {
@@ -82,7 +81,6 @@ public class SignUpRepositoryImp implements SignUpRepository{
             sign = (SignUpEntity) query.getSingleResult();
 //            SignUpEntity sign=getSignIn(email);
             if(email.equals(sign.getEmail())) {
-                System.out.println("InRepoC"+email+"1"+pass);
             Query query1=entityManager.createNamedQuery("UpdatePass");
             query1.setParameter("email",email);
             query1.setParameter("password",pass);
@@ -92,6 +90,29 @@ public class SignUpRepositoryImp implements SignUpRepository{
             }
 
 
+        }catch (Exception e){
+            assert entityTransaction != null;
+            if(entityTransaction.isActive()){
+                entityTransaction.rollback();
+            }
+            e.printStackTrace();
+        }finally {
+            entityManager.close();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean updateprofile(SignUpEntity entity) {
+        EntityManager entityManager=null;
+        EntityTransaction entityTransaction=null;
+        try{
+
+            entityManager=entityManagerFactory.createEntityManager();
+            entityTransaction=entityManager.getTransaction();
+            entityTransaction.begin();
+
+            entityTransaction.commit();
         }catch (Exception e){
             assert entityTransaction != null;
             if(entityTransaction.isActive()){
