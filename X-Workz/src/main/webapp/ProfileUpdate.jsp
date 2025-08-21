@@ -64,9 +64,7 @@
             </div>
 
         </form>
-        <div class="text-center text-light mt-3">
-            <small>Already have an account? <a class="text-danger" href="SignIn.jsp">Log In</a></small>
-        </div>
+        
     </div>
 
 </div>

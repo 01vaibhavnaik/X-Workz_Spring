@@ -42,7 +42,7 @@ public class XworkzController {
         signUpDTO = signUpService.getSignin(email, password);
         if(signUpDTO==null){
         modelAndView.addObject("result","fail");
-        modelAndView.setViewName("SignInFail");
+        modelAndView.setViewName("SignIn");
         return modelAndView;
 
         }else {
