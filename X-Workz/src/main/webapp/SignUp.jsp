@@ -31,7 +31,7 @@
 
             <div class="mb-3">
                 <label for="nameId" class="form-label">Full Name</label>
-                <input type="text" class="form-control" id="nameId" name="name"
+                <input type="text" minlength="0" maxlength="25" class="form-control" id="nameId" name="name"
                        oninput="validateName()" placeholder="Enter your full name" required>
                 <span id="nameErrorId" class="text-danger small"></span>
             </div>
@@ -47,7 +47,7 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="ageId" class="form-label">Age</label>
-                    <input type="number" class="form-control" id="ageId" name="age"
+                    <input type="number" min="18" max="60" class="form-control" id="ageId" name="age"
                            oninput="validateAge()" placeholder="Enter your age" required>
                     <span id="ageError" class="text-danger small"></span>
                 </div>
@@ -55,9 +55,9 @@
                     <label for="genderId" class="form-label">Gender</label>
                     <select class="form-select" id="genderId" name="gender" onchange="validateGender()" required>
                         <option selected disabled>Select Gender</option>
-                        <option value="m">Male</option>
-                        <option value="f">Female</option>
-                        <option value="o">Other</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
                     </select>
                     <span id="genderErrorId" class="text-danger small"></span>
                 </div>

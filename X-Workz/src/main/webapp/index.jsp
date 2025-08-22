@@ -20,15 +20,13 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <div class="d-flex gap-2">
                 <a href="SignIn.jsp" class="btn btn-outline-danger">Sign In</a>
-                <a href="SignUp.jsp" class="btn btn-danger">Sign Up</a>
+                <a href="SignUp.jsp" class="btn btn-outline-danger">Sign Up</a>
             </div>
         </div>
     </div>
 </nav>
-
 </body>
 </html>

@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
 
 public class SignUpDTO {
     @NotNull
-    @Size(min=3,max = 25,message = "Your Name Must Contain Min 3 And Max 15 Character")
+    @Size(min=3,max = 25,message = "Your Name Must Contain Min 3 And Max 25 Character")
     private String name;
     @NotNull
     @Pattern(regexp = "^[A-Za-z0-9]+@gmail\\.com$", message = "Enter Correct Email")
