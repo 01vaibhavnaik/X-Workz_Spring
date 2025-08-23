@@ -12,7 +12,7 @@
     <div class="container-fluid">
         <ul class="nav mx-auto">
             <li class="nav-item">
-                <a class="nav-link text-light text-decoration-none" href="index.jsp">Home</a>
+                <a class="nav-link text-light text-decoration-none" href="Home.jsp">Home</a>
             </li>
         </ul>
     </div>
@@ -20,12 +20,15 @@
 <div class="d-flex justify-content-center align-items-center vh-100">
     <div class="card shadow p-4 border rounded border-secondary bg-transparent "
          style="width: 100%; max-width: 800px;">
+        <c:if test="not empty userSigInData">
+            <p class="text-success">${userSigInData}</p>
+        </c:if>
         <h3 class="text-center fst-italic text-light mb-4">Update Profile</h3>
 
         <form action="updateprofile" method="POST"  >
             <div class="mb-3">
                 <label for="nameId" class="form-label text-light">Full Name</label>
-                <input type="text" class="form-control" oninput="validateName()" id="nameId" name="name" value="${dto.name}" required
+                <input type="text" minlength="0" maxlength="25" class="form-control" oninput="validateName()" id="nameId" name="name" value="${dto.name}" required
                        placeholder="Enter your name">
                 <span id="nameErrorId" class="text-danger"></span>
             </div>
@@ -34,11 +37,11 @@
                 <label for="emailId" class="form-label text-light">Email Address</label>
                 <input type="email" class="form-control" oninput="validateEmail()" id="emailId" name="email" value="${dto.email}" readonly
                        placeholder="Enter your email">
-                <span id="emailErrorId" class="text-danger"></span>
+
             </div>
             <div class="mb-3">
                 <label for="ageId" class="form-label text-light">Age</label>
-                <input type="number" class="form-control" oninput="validateAge()" id="ageId" name="age" value="${dto.age}" required
+                <input type="number" min="1" max="60" class="form-control" oninput="validateAge()" id="ageId" name="age" value="${dto.age}" required
                        placeholder="Enter your Age">
                 <span id="ageError" class="text-danger"></span>
             </div>
@@ -64,7 +67,6 @@
             </div>
 
         </form>
-        
     </div>
 
 </div>
