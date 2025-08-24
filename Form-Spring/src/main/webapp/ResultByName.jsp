@@ -13,11 +13,9 @@
         <table class="table table-bordered table-striped table-hover">
             <thead class="table-dark">
             <tr>
-
                 <th>Full Name</th>
                 <th>Email</th>
                 <th>Address</th>
-
             </tr>
             </thead>
             <tr>
