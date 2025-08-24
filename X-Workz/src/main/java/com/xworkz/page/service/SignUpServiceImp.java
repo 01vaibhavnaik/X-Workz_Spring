@@ -1,10 +1,9 @@
 package com.xworkz.page.service;
 
-import com.sun.mail.smtp.SMTPTransport;
 import com.xworkz.page.dto.SignUpDTO;
 import com.xworkz.page.entity.SignUpEntity;
 import com.xworkz.page.repository.SignUpRepository;
-import com.xworkz.page.repository.SignUpRepositoryImp;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
