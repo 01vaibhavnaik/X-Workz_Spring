@@ -24,7 +24,7 @@ public class XworkzController {
     public ModelAndView getdetail(@Valid SignUpDTO signUpDTO, BindingResult bindingResult,ModelAndView modelAndView){
         if(bindingResult.hasErrors()) {
             modelAndView.addObject("errors", bindingResult.getAllErrors());
-//            modelAndView.setViewName("SignIn");
+            modelAndView.setViewName("SignIn");
             return modelAndView;
         }
 
