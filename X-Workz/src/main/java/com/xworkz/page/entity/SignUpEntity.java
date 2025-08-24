@@ -25,5 +25,5 @@ public class SignUpEntity {
     private String gender;
     private String address;
     private String password;
-    private int is_lock;
+//    private int is_lock;
 }
