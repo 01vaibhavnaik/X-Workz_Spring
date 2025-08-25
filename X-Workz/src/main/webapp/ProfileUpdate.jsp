@@ -72,5 +72,5 @@
 </div>
 
 </body>
-<script src="signUp.js"></script>
+<!--<script src="signUp.js"></script>-->
 </html>
