@@ -21,36 +21,47 @@ public class XworkzController {
     SignUpService signUpService;
 
     @RequestMapping("/signup")
-    public ModelAndView getdetail(@Valid SignUpDTO signUpDTO, BindingResult bindingResult,ModelAndView modelAndView){
-        if(bindingResult.hasErrors()) {
+    public ModelAndView getdetail(@Valid SignUpDTO signUpDTO, BindingResult bindingResult, ModelAndView modelAndView) {
+        if (bindingResult.hasErrors()) {
             modelAndView.addObject("errors", bindingResult.getAllErrors());
             modelAndView.setViewName("SignIn");
             return modelAndView;
         }
-
         signUpService.getSignUp(signUpDTO);
         modelAndView.setViewName("SignIn");
         return modelAndView;
     }
 
 
-
     @RequestMapping("/signin")
     public ModelAndView getdetail(@Valid String email, String password, ModelAndView modelAndView, HttpSession session) {
         SignUpDTO signUpDTO;
         signUpDTO = signUpService.getSignin(email, password);
-        if(signUpDTO==null){
-        modelAndView.addObject("result","fail");
-        modelAndView.setViewName("SignIn");
-        return modelAndView;
-
-        }else {
-            session.setAttribute("userSigInData",signUpDTO);
+        if (signUpDTO == null) {
+            modelAndView.addObject("result", "fail");
+            modelAndView.setViewName("SignIn");
+        }
+        else if (signUpDTO.getName().equals("Locked")) {
+            modelAndView.addObject("result", "false");
+            modelAndView.setViewName("SignIn");
+        }
+        else if (signUpDTO.getName().equals("TimeOut")) {
+            modelAndView.addObject("result", "reset");
+            modelAndView.setViewName("SignIn");
+        }
+        else if (signUpDTO.getName().equals("notFound")) {
+            modelAndView.addObject("result", "notfound");
+            modelAndView.setViewName("SignIn");
+        }
+        else {
+            session.setAttribute("userSigInData", signUpDTO);
             modelAndView.addObject("results", signUpDTO);
             modelAndView.setViewName("Home");
-            return modelAndView;
+
         }
+        return modelAndView;
     }
+
 
 
     @RequestMapping("/forgotpass")
