@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,5 +26,6 @@ public class SignUpEntity {
     private String gender;
     private String address;
     private String password;
-//    private int is_lock;
+    private int is_lock=0;
+    private LocalDateTime local_date_time;
 }
