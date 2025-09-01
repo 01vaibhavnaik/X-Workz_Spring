@@ -22,8 +22,6 @@ public class SignUpServiceImp implements SignUpService {
     @Autowired
     SignUpRepository signUpRepository;
 
-
-
     BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
 
