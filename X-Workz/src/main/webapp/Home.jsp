@@ -17,6 +17,7 @@
             <img src="image/logo.png" alt="Logo" width="100" height="35" class="me-2">
         </a>
         <div class="ms-auto">
+            <a href="SignIn.jsp" class="btn btn-outline-danger">LogOut</a>
             <a href="userdetail" class="btn btn-outline-danger">Profile</a>
         </div>
     </div>
@@ -44,7 +45,6 @@
                     <p class="lead text-white-50 mb-4">
                         Welcome back to your dashboard.
                     </p>
-
                 </div>
             </div>
         </c:otherwise>
