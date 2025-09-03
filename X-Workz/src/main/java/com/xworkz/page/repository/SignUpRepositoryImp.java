@@ -7,31 +7,30 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.*;
 
 @Repository
-public class SignUpRepositoryImp implements SignUpRepository{
+public class SignUpRepositoryImp implements SignUpRepository {
 
     @Autowired
     EntityManagerFactory entityManagerFactory;
 
 
-
     @Override
     public boolean getSignUp(SignUpEntity signUpEntity) {
-        EntityManager entityManager=null;
-        EntityTransaction entityTransaction=null;
-        try{
+        EntityManager entityManager = null;
+        EntityTransaction entityTransaction = null;
+        try {
 
-            entityManager=entityManagerFactory.createEntityManager();
-            entityTransaction=entityManager.getTransaction();
+            entityManager = entityManagerFactory.createEntityManager();
+            entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
             entityManager.persist(signUpEntity);
             entityTransaction.commit();
-        }catch (Exception e){
+        } catch (Exception e) {
             assert entityTransaction != null;
-            if(entityTransaction.isActive()){
+            if (entityTransaction.isActive()) {
                 entityTransaction.rollback();
             }
             e.printStackTrace();
-        }finally {
+        } finally {
             entityManager.close();
         }
         return false;
@@ -39,8 +38,8 @@ public class SignUpRepositoryImp implements SignUpRepository{
 
     @Override
     public SignUpEntity getSignIn(String email) {
-        EntityManager entityManager=null;
-        EntityTransaction entityTransaction=null;
+        EntityManager entityManager = null;
+        EntityTransaction entityTransaction = null;
         SignUpEntity sign = new SignUpEntity();
         try {
             entityManager = entityManagerFactory.createEntityManager();
@@ -69,34 +68,35 @@ public class SignUpRepositoryImp implements SignUpRepository{
     @Override
     public boolean forgotpass(String email, String pass) {
 
-        EntityManager entityManager=null;
-        EntityTransaction entityTransaction=null;
-        SignUpEntity sign=new SignUpEntity();
-        try{
-            entityManager=entityManagerFactory.createEntityManager();
-            entityTransaction=entityManager.getTransaction();
+        EntityManager entityManager = null;
+        EntityTransaction entityTransaction = null;
+        SignUpEntity sign = new SignUpEntity();
+        try {
+            entityManager = entityManagerFactory.createEntityManager();
+            entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
             Query query = entityManager.createNamedQuery("signIn");
             query.setParameter("email", email);
             sign = (SignUpEntity) query.getSingleResult();
 //            SignUpEntity sign=getSignIn(email);
-            if(email.equals(sign.getEmail())) {
-            Query query1=entityManager.createNamedQuery("UpdatePass");
-            query1.setParameter("email",email);
-            query1.setParameter("password",pass);
-            query1.executeUpdate();
-            entityTransaction.commit();
-            return true;
+            if (email.equals(sign.getEmail())) {
+                Query query1 = entityManager.createNamedQuery("UpdatePass");
+                query1.setParameter("email", email);
+                query1.setParameter("password", pass);
+                query1.setParameter("is_lock", 0);
+                query1.executeUpdate();
+                entityTransaction.commit();
+                return true;
             }
 
 
-        }catch (Exception e){
+        } catch (Exception e) {
             assert entityTransaction != null;
-            if(entityTransaction.isActive()){
+            if (entityTransaction.isActive()) {
                 entityTransaction.rollback();
             }
             e.printStackTrace();
-        }finally {
+        } finally {
             entityManager.close();
         }
         return false;
@@ -105,12 +105,12 @@ public class SignUpRepositoryImp implements SignUpRepository{
     @Override
     public boolean updateprofile(SignUpEntity entity) {
 
-        EntityManager entityManager=null;
-        EntityTransaction entityTransaction=null;
-        try{
+        EntityManager entityManager = null;
+        EntityTransaction entityTransaction = null;
+        try {
 
-            entityManager=entityManagerFactory.createEntityManager();
-            entityTransaction=entityManager.getTransaction();
+            entityManager = entityManagerFactory.createEntityManager();
+            entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
             Query query = entityManager.createNamedQuery("UpdateDetail");
             query.setParameter("email", entity.getEmail());
@@ -119,17 +119,64 @@ public class SignUpRepositoryImp implements SignUpRepository{
             query.setParameter("address", entity.getAddress());
             query.executeUpdate();
             entityTransaction.commit();
-        }catch (Exception e){
+        } catch (Exception e) {
             assert entityTransaction != null;
-            if(entityTransaction.isActive()){
+            if (entityTransaction.isActive()) {
                 entityTransaction.rollback();
             }
             e.printStackTrace();
-        }finally {
+        } finally {
             entityManager.close();
         }
         return false;
     }
 
+    @Override
+    public boolean isLock(SignUpEntity entity) {
 
+        EntityManager entityManager = null;
+        EntityTransaction entityTransaction = null;
+        try {
+            entityManager = entityManagerFactory.createEntityManager();
+            entityTransaction = entityManager.getTransaction();
+            entityTransaction.begin();
+            entityManager.merge(entity);
+            entityTransaction.commit();
+            return true;
+        } catch (Exception e) {
+            assert entityTransaction != null;
+            if (entityTransaction.isActive()) {
+                entityTransaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            entityManager.close();
+        }
+        return false;
+    }
+
+    @Override
+    public long getCount(String email) {
+        EntityManager entityManager = null;
+        EntityTransaction entityTransaction = null;
+        long count = 0;
+        try {
+            entityManager = entityManagerFactory.createEntityManager();
+            entityTransaction = entityManager.getTransaction();
+            entityTransaction.begin();
+            Query query = entityManager.createNamedQuery("Counts");
+            query.setParameter("email", email);
+            entityTransaction.commit();
+            return count;
+        } catch (Exception e) {
+            assert entityTransaction != null;
+            if (entityTransaction.isActive()) {
+                entityTransaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            entityManager.close();
+        }
+        return count;
+    }
 }

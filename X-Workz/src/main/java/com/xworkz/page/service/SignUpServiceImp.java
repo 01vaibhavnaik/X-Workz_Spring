@@ -5,6 +5,7 @@ import com.xworkz.page.entity.SignUpEntity;
 import com.xworkz.page.repository.SignUpRepository;
 
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,7 @@ public class SignUpServiceImp implements SignUpService {
 
     @Override
     public boolean getSignUp(SignUpDTO signUpDTO) {
-        SignUpEntity signUpEntity=new SignUpEntity();
+        SignUpEntity signUpEntity = new SignUpEntity();
         signUpEntity.setName(signUpDTO.getName());
         signUpEntity.setEmail(signUpDTO.getEmail());
         setEmail(signUpEntity.getEmail());
@@ -43,29 +44,51 @@ public class SignUpServiceImp implements SignUpService {
 
     @Override
     public SignUpDTO getSignin(String email, String password) {
+        SignUpDTO signUpDTO = new SignUpDTO();
         SignUpEntity sign = signUpRepository.getSignIn(email);
-        SignUpDTO signUpDTO=new SignUpDTO();
-        signUpDTO.setEmail(sign.getEmail());
-        signUpDTO.setName(sign.getName());
-        signUpDTO.setAddress(sign.getAddress());
-        signUpDTO.setAge(sign.getAge());
-        signUpDTO.setGender(sign.getGender());
-        if (sign !=null && bCryptPasswordEncoder.matches(password, sign.getPassword())) {
+
+        if (sign == null) {
+            signUpDTO.setEmail("notFound");
             return signUpDTO;
         }
-    return null;
+        else
+        {
+            if (sign.getIs_lock() == 3)
+            {
+                signUpDTO.setEmail("Locked");
+                return signUpDTO;
+            }
+            else
+            {
+                if (bCryptPasswordEncoder.matches(password, sign.getPassword()))
+                {
+                    BeanUtils.copyProperties(sign, signUpDTO);
+                    sign.setIs_lock(0);
+                    signUpRepository.isLock(sign);
+                    return signUpDTO;
+                } else
+                {
+                    int trails = sign.getIs_lock() + 1;
+                    sign.setIs_lock(trails);
+                    signUpRepository.isLock(sign);
+                }
+
+                return signUpDTO;
+            }
+
+        }
     }
 
     @Override
     public boolean forgotpass(String email, String password) {
-        String pas= bCryptPasswordEncoder.encode(password);
-        signUpRepository.forgotpass(email,pas);
+        String pas = bCryptPasswordEncoder.encode(password);
+        signUpRepository.forgotpass(email, pas);
         return true;
     }
 
     @Override
     public boolean updateprofile(SignUpDTO signUpDTO) {
-        SignUpEntity signUpEntity=new SignUpEntity();
+        SignUpEntity signUpEntity = new SignUpEntity();
         signUpEntity.setName(signUpDTO.getName());
         signUpEntity.setEmail(signUpDTO.getEmail());
         signUpEntity.setAge(signUpDTO.getAge());
@@ -75,9 +98,11 @@ public class SignUpServiceImp implements SignUpService {
         return false;
     }
 
+    private long getCount(String email){
+        return Math.toIntExact(signUpRepository.getCount(email));
+    }
+
     private void setEmail(String email) {
-
-
         final String username = "vaibhavnaik32275@gmail.com";
         final String password = "ndof jelk psyn wnvx";
 
@@ -85,7 +110,7 @@ public class SignUpServiceImp implements SignUpService {
         prop.put("mail.smtp.host", "smtp.gmail.com");
         prop.put("mail.smtp.port", "587");
         prop.put("mail.smtp.auth", "true");
-        prop.put("mail.smtp.starttls.enable", "true"); //TLS
+        prop.put("mail.smtp.starttls.enable", "true");
 
         Session session = Session.getInstance(prop,
                 new javax.mail.Authenticator() {
