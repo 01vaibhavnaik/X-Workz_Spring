@@ -8,4 +8,6 @@ public interface SignUpRepository {
     SignUpEntity getSignIn(String email);
     boolean forgotpass(String email,String pass);
     boolean updateprofile(SignUpEntity entity);
+    boolean isLock(SignUpEntity entity);
+    long getCount(String email);
 }

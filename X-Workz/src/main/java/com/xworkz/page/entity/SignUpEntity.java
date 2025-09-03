@@ -13,8 +13,10 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "xworkzsignup")
 @NamedQuery(name="signIn",query = "select e from SignUpEntity e where email=:email")
-@NamedQuery(name = "UpdatePass",query = "update SignUpEntity e set e.password=:password where email =:email")
+@NamedQuery(name = "UpdatePass",query = "update SignUpEntity e set e.password=:password,e.is_lock=:is_lock where email =:email")
 @NamedQuery(name = "UpdateDetail",query = "update SignUpEntity e set e.name=:name,e.age=:age,e.address=:address where email =:email")
+@NamedQuery(name = "Counts",query = "select count(e) from SignUpEntity e where email=:email")
+
 public class SignUpEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,5 +29,5 @@ public class SignUpEntity {
     private String address;
     private String password;
     private int is_lock=0;
-    private LocalDateTime local_date_time;
+//    private LocalDateTime local_date_time;
 }
