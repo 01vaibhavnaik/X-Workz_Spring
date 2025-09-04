@@ -9,4 +9,5 @@ public interface SignUpService {
     SignUpDTO getSignin(String email, String password);
     boolean forgotpass(String email,String password);
     boolean updateprofile(SignUpDTO signUpDTO);
+    int getCount(String email);
 }

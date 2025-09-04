@@ -1,12 +1,14 @@
 package com.xworkz.page.repository;
 
 import com.xworkz.page.entity.SignUpEntity;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
 
 @Repository
+@Slf4j
 public class SignUpRepositoryImp implements SignUpRepository {
 
     @Autowired
@@ -166,6 +168,7 @@ public class SignUpRepositoryImp implements SignUpRepository {
             entityTransaction.begin();
             Query query = entityManager.createNamedQuery("Counts");
             query.setParameter("email", email);
+            log.info(email);
             entityTransaction.commit();
             return count;
         } catch (Exception e) {
