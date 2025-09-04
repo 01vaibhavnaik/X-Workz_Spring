@@ -38,18 +38,18 @@ public class XworkzController {
         SignUpDTO signUpDTO;
         signUpDTO = signUpService.getSignin(email, password);
         if (signUpDTO == null) {
-            modelAndView.addObject("result", "fail");
+            modelAndView.addObject("result", "invalid password");
             modelAndView.setViewName("SignIn");
         }
-        else if (signUpDTO.getName().equals("Locked")) {
-            modelAndView.addObject("result", "false");
+        else if (signUpDTO.getEmail().equals("Locked")) {
+            modelAndView.addObject("result", "your account has locked");
             modelAndView.setViewName("SignIn");
         }
-        else if (signUpDTO.getName().equals("TimeOut")) {
-            modelAndView.addObject("result", "reset");
-            modelAndView.setViewName("SignIn");
-        }
-        else if (signUpDTO.getName().equals("notFound")) {
+//        else if (signUpDTO.getEmail().equals("TimeOut")) {
+//            modelAndView.addObject("result", "reset");
+//            modelAndView.setViewName("SignIn");
+//        }
+        else if (signUpDTO.getEmail().equals("notFound")) {
             modelAndView.addObject("result", "notfound");
             modelAndView.setViewName("SignIn");
         }

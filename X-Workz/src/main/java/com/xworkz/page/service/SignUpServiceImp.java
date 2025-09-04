@@ -97,8 +97,8 @@ public class SignUpServiceImp implements SignUpService {
         signUpRepository.updateprofile(signUpEntity);
         return false;
     }
-
-    private long getCount(String email){
+   @Override
+    public int getCount(String email){
         return Math.toIntExact(signUpRepository.getCount(email));
     }
 
