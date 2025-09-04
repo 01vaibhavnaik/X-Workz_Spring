@@ -39,7 +39,7 @@
             <div class="mb-3">
                 <label for="emailId" class="form-label">Email Address</label>
                 <input type="email" class="form-control" id="emailId" name="email"
-                       oninput="validateEmail()" placeholder="Enter your email" required>
+                       oninput="validateEmail()" onchange="checkEmail()" placeholder="Enter your email" required>
                 <span id="emailErrorId" class="text-danger small"></span>
             </div>
 

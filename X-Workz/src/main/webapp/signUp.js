@@ -19,6 +19,19 @@ emailError.innerText="";
 }
 }
 
+function checkEmail(){
+let emailName=document.getElementById("emailId").value;
+let emailError=document.getElementById("emailErrorId");
+const xhttp=new XMLHttpRequest();
+xhttp.open("GET","http://localhost:8080/X-Workz/checkEmail/"+emailName);
+xhttp.send();
+xhttp.onload=function(){
+emailError.innerHTML=this.responseText;
+}
+}
+
+
+
 function validateAge(){
 let age=document.getElementById("ageId").value;
 let ageError=document.getElementById("ageError");

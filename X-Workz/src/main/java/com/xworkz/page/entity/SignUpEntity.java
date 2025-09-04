@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @NamedQuery(name="signIn",query = "select e from SignUpEntity e where email=:email")
 @NamedQuery(name = "UpdatePass",query = "update SignUpEntity e set e.password=:password,e.is_lock=:is_lock where email =:email")
 @NamedQuery(name = "UpdateDetail",query = "update SignUpEntity e set e.name=:name,e.age=:age,e.address=:address where email =:email")
-@NamedQuery(name = "Counts",query = "select count(e) from SignUpEntity e where email=:email")
+@NamedQuery(name = "Counts",query = "select count(e.email) from SignUpEntity e where email=:email")
 
 public class SignUpEntity {
     @Id

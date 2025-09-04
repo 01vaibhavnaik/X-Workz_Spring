@@ -66,7 +66,6 @@
         <div class="text-center mt-4">
             <small>Dont have an account? <a href="SignUp.jsp" class="text-warning text-decoration-none fw-semibold">Sign Up</a></small>
         </div>
-
         <c:if test="${not empty result}">
             <div class="alert alert-warning mt-3 text-center p-1">${result}</div>
         </c:if>
