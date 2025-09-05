@@ -37,7 +37,7 @@ public class XworkzController {
     public ModelAndView getdetail(@Valid String email, String password, ModelAndView modelAndView, HttpSession session) {
         SignUpDTO signUpDTO;
         signUpDTO = signUpService.getSignin(email, password);
-        if (signUpDTO == null) {
+        if (signUpDTO.getEmail() == null) {
             modelAndView.addObject("result", "invalid password");
             modelAndView.setViewName("SignIn");
         }
@@ -50,7 +50,7 @@ public class XworkzController {
 //            modelAndView.setViewName("SignIn");
 //        }
         else if (signUpDTO.getEmail().equals("notFound")) {
-            modelAndView.addObject("result", "notfound");
+            modelAndView.addObject("result", "not found");
             modelAndView.setViewName("SignIn");
         }
         else {
