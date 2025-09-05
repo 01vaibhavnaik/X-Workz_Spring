@@ -5,6 +5,7 @@ import com.xworkz.page.entity.SignUpEntity;
 import com.xworkz.page.repository.SignUpRepository;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,7 +18,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
-
+@Slf4j
 @Service
 public class SignUpServiceImp implements SignUpService {
     @Autowired
@@ -47,7 +48,7 @@ public class SignUpServiceImp implements SignUpService {
         SignUpDTO signUpDTO = new SignUpDTO();
         SignUpEntity sign = signUpRepository.getSignIn(email);
 
-        if (sign == null) {
+        if (sign.getEmail() == null) {
             signUpDTO.setEmail("notFound");
             return signUpDTO;
         }
@@ -99,6 +100,7 @@ public class SignUpServiceImp implements SignUpService {
     }
    @Override
     public int getCount(String email){
+        log.info(email);
         return Math.toIntExact(signUpRepository.getCount(email));
     }
 
