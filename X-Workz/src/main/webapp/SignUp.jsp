@@ -6,13 +6,10 @@
     <title>Sign Up</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body class="bg-dark text-white">
-
 <nav class="navbar navbar-expand-lg bg-dark bg-opacity-75 shadow-sm sticky-top">
     <div class="container justify-content-center">
         <a class="navbar-brand text-light fw-bold" href="index.jsp">
@@ -116,7 +113,18 @@
 
     </div>
 </div>
-
 <script src="signUp.js"></script>
+<script>
+    function checkEmail(){
+    let emailName = document.getElementById("emailId").value;
+    let emailError = document.getElementById("emailErrorId");
+    const xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "http://localhost:8080/X-Workz/checkEmail/" + emailName);
+    xhttp.send();
+    xhttp.onload = function() {
+        emailError.innerHTML = this.responseText;
+    }
+    }
+</script>
 </body>
 </html>
