@@ -168,6 +168,7 @@ public class SignUpRepositoryImp implements SignUpRepository {
             entityTransaction.begin();
             Query query = entityManager.createNamedQuery("Counts");
             query.setParameter("email", email);
+            count = (long) query.getSingleResult();
             log.info(email);
             entityTransaction.commit();
             return count;
