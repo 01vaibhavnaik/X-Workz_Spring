@@ -38,7 +38,18 @@ public class HospitalServiceImp implements HospitalService {
             generatedOtp = builder.toString();
             setEmail(email, "Dear User,\n\nThe OTP for you is: " + generatedOtp);
         }
-//        hospitalRepository.save(generatedOtp);
+
+    }
+
+    @Override
+    public boolean check(String otp) {
+        if(otp.equals(generatedOtp)){
+            generatedOtp="";
+            return true;
+        }else
+        {
+            return false;
+        }
     }
 
     private void setEmail(String recipientEmail,String body) {

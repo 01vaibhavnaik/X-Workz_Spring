@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Slf4j
 @Controller
@@ -18,7 +19,7 @@ public class HospitalController {
     HospitalService hospitalService;
 
     @RequestMapping("/sendotp")
-    public String sendOtp(@RequestParam(value = "email") String email, Model model) {
+    public String sendOtp( String email, Model model) {
         if (email.isEmpty()) {
             log.info("=-----------------===");
         }else {
@@ -29,5 +30,24 @@ public class HospitalController {
 
     }
 
+    @RequestMapping("/signin")
+    public ModelAndView logIn(String otpname,ModelAndView modelAndView){
+        if(otpname == null || otpname.isEmpty()){
+            modelAndView.addObject("message","Enter Otp");
+            log.info("fail");
+        }else {
+
+            boolean check= hospitalService.check(otpname);
+            if(check){
+                modelAndView.addObject("message","Successfull");
+                modelAndView.setViewName("Home");
+//                log.info("Successfull");
+            }else {
+                modelAndView.addObject("result", "Incorrect Otp");
+                modelAndView.setViewName("SignIn");
+            }
+        }
+        return modelAndView;
+    }
 
 }
