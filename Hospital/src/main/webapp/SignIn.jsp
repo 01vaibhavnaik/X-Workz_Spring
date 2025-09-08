@@ -33,7 +33,7 @@
             <div class="mb-3">
                 <label for="otpId" class="form-label">Enter OTP</label>
                 <div class="input-group">
-                    <input type="password" class="form-control" id="otpId" name="otpname"
+                    <input type="text" class="form-control" maxlength="6" id="otpId" name="otpname"
                            oninput="validateOtp()" placeholder="Enter your OTP" >
                     <button  formaction="sendotp"  class="btn btn-primary">
                         Send OTP
