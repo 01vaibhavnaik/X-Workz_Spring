@@ -47,4 +47,3 @@
 <script src="index.js"></script>
 </body>
 </html>
-<!--<span id="OTPErrorId" class="text-danger small"></span>-->
