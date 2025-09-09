@@ -19,3 +19,4 @@ emailError.innerText="";
         emailError.innerHTML = this.responseText;
     }
 }
+
