@@ -29,26 +29,13 @@
                        oninput="validateEmail()" onchange="checkEmail()" placeholder="Enter your email" required>
                 <span id="emailErrorId" class="text-danger small"></span>
             </div>
-
-            <div class="mb-3">
-                <label for="otpId" class="form-label">Enter OTP</label>
-                <div class="input-group">
-                    <input type="text" class="form-control" maxlength="6" id="otpId" name="otpname"
-                           oninput="validateOtp()" placeholder="Enter your OTP" >
-                    <button  formaction="sendotp"  class="btn btn-primary">
-                        Send OTP
-                    </button>
-                </div>
-                <span id="OTPErrorId" class="text-danger small"></span>
-            </div>
-
             <div class="form-check mb-3">
                 <input type="checkbox" class="form-check-input" id="rememberId" name="remember">
                 <label class="form-check-label" for="rememberId">Remember me</label>
             </div>
 
             <div class="d-grid">
-                <button type="submit" class="btn btn-success btn-lg fw-semibold">Log In</button>
+                <button formaction="sendotp" class="btn btn-success btn-lg fw-semibold">Send OTP</button>
             </div>
         </form>
 
@@ -60,3 +47,4 @@
 <script src="index.js"></script>
 </body>
 </html>
+<!--<span id="OTPErrorId" class="text-danger small"></span>-->
