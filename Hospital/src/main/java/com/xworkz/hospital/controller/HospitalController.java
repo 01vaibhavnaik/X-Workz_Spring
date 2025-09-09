@@ -19,35 +19,40 @@ public class HospitalController {
     HospitalService hospitalService;
 
     @RequestMapping("/sendotp")
-    public String sendOtp( String email, Model model) {
-        if (email.isEmpty()) {
-            log.info("=-----------------===");
-        }else {
+    public String sendOtp(@RequestParam String email, Model model) {
+        if (email == null || email.isEmpty()) {
+            model.addAttribute("result", "Email Not Found");
+        } else {
             hospitalService.getOtp(email);
             model.addAttribute("result", "OTP sent to " + email);
+            model.addAttribute("email", email);
         }
         return "SignIn";
-
     }
 
     @RequestMapping("/signin")
-    public ModelAndView logIn(String otpname,ModelAndView modelAndView){
-        if(otpname == null || otpname.isEmpty()){
-            modelAndView.addObject("message","Enter Otp");
-            log.info("fail");
-        }else {
+    public ModelAndView logIn(@RequestParam String otpname,
+                              @RequestParam String email,
+                              ModelAndView modelAndView) {
 
-            boolean check= hospitalService.check(otpname);
-            if(check){
-                modelAndView.addObject("message","Successfull");
+        if (otpname == null || otpname.isEmpty()) {
+            modelAndView.addObject("result", "Enter Otp");
+            modelAndView.addObject("email", email);
+            modelAndView.setViewName("SignIn");
+        } else {
+            boolean check = hospitalService.check(otpname);
+
+            if (check) {
+                modelAndView.addObject("message", "Successful");
                 modelAndView.setViewName("Home");
-//                log.info("Successfull");
-            }else {
+            } else {
                 modelAndView.addObject("result", "Incorrect Otp");
+                modelAndView.addObject("email", email);
                 modelAndView.setViewName("SignIn");
             }
         }
         return modelAndView;
     }
+
 
 }
