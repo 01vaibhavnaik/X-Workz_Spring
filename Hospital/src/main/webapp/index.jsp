@@ -24,7 +24,7 @@
 
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <div class="d-flex gap-2">
-                <a href="SignIn.jsp" class="btn btn-success">Admin LogIn</a>
+                <a href="OTP.jsp" class="btn btn-success">Admin LogIn</a>
             </div>
         </div>
     </div>
