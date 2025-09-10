@@ -28,4 +28,5 @@ public class SignUpDTO {
 //    @NotNull(message = "Password Is Required ")
     @Pattern(regexp = "^(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=(.*\\d){3,}).{3,15}$", message = "Put A Strong Password")
     private String password;
+    private String imagepath;
 }
