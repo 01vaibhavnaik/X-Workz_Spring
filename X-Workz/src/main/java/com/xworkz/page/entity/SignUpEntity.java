@@ -29,5 +29,7 @@ public class SignUpEntity {
     private String address;
     private String password;
     private int is_lock=0;
+    @Column(name = "image")
+    private String imagepath;
 //    private LocalDateTime local_date_time;
 }
