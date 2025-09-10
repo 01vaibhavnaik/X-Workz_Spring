@@ -5,7 +5,6 @@ import com.xworkz.page.service.SignUpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,6 +16,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
 
 
 @Controller
@@ -40,13 +40,14 @@ public class XworkzController {
         Path path= Paths.get("D:\\ImageData\\"+signUpDTO.getName()+System.currentTimeMillis()+".jpg");
         Files.write(path,bytes);
         String imageName=path.getFileName().toString();
+        signUpDTO.setImagepath(imageName);
         signUpService.getSignUp(signUpDTO);
         modelAndView.setViewName("SignIn");
         return modelAndView;
     }
 
 
-    @PostMapping("/signin")
+    @RequestMapping("/signin")
     public ModelAndView getdetail( @Valid String email, String password, ModelAndView modelAndView, HttpSession session) {
         SignUpDTO signUpDTO;
         signUpDTO = signUpService.getSignin(email, password);
