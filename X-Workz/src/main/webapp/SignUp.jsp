@@ -24,7 +24,7 @@
         <h2 class="text-center fw-bold mb-4">Create Account</h2>
 
 
-        <form action="signup" method="POST" >
+        <form action="signup" method="POST" enctype="multipart/form-data">
 
             <div class="mb-3">
                 <label for="nameId" class="form-label">Full Name</label>
@@ -91,7 +91,10 @@
                 </div>
                 <span id="CpasswordErrorId" class="text-danger small"></span>
             </div>
-
+            <br>
+            <input type="file" name="image" value="Choose file">
+            <br>
+            <br>
             <div class="form-check mb-3">
                 <input type="checkbox" class="form-check-input" id="termsId" required>
                 <label class="form-check-label" for="termsId">
