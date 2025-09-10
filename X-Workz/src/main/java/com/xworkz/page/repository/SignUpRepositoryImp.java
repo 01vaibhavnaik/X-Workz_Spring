@@ -26,6 +26,7 @@ public class SignUpRepositoryImp implements SignUpRepository {
             entityTransaction.begin();
             entityManager.persist(signUpEntity);
             entityTransaction.commit();
+
         } catch (Exception e) {
             assert entityTransaction != null;
             if (entityTransaction.isActive()) {
