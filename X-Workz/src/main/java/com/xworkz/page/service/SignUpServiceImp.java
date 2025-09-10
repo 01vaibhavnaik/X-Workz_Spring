@@ -38,7 +38,7 @@ public class SignUpServiceImp implements SignUpService {
         signUpEntity.setAddress(signUpDTO.getAddress());
         String enc = bCryptPasswordEncoder.encode(signUpDTO.getPassword());
         signUpEntity.setPassword(enc);
-
+        signUpEntity.setImagepath(signUpDTO.getImagepath());
         signUpRepository.getSignUp(signUpEntity);
         return false;
     }
