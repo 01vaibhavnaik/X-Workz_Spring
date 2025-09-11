@@ -1,14 +1,27 @@
 package com.xworkz.hospital.controller;
 
+import com.xworkz.hospital.dto.DoctorDTO;
 import com.xworkz.hospital.entity.HospitalEntity;
 import com.xworkz.hospital.service.HospitalService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.validation.Valid;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -31,9 +44,7 @@ public class HospitalController {
     }
 
     @RequestMapping("/signin")
-    public ModelAndView logIn(@RequestParam String otpname,
-                              @RequestParam String email,
-                              ModelAndView modelAndView) {
+    public ModelAndView logIn(@RequestParam String otpname, @RequestParam String email, ModelAndView modelAndView) {
 
         if (otpname == null || otpname.isEmpty()) {
             modelAndView.addObject("result", "Enter Otp");
@@ -41,8 +52,11 @@ public class HospitalController {
             modelAndView.setViewName("SignIn");
         } else {
             boolean check = hospitalService.check(otpname);
-
             if (check) {
+//
+//                httpSession.setAttribute("loggedIn", true);
+//                httpSession.setAttribute("email", email);
+
                 modelAndView.addObject("message", "Successful");
                 modelAndView.setViewName("Home");
             } else {
@@ -51,6 +65,38 @@ public class HospitalController {
                 modelAndView.setViewName("SignIn");
             }
         }
+        return modelAndView;
+    }
+    
+    @PostMapping("/doctordetails")
+    public ModelAndView saveDetails(@RequestParam("profileimage") MultipartFile multipartFile,@Valid DoctorDTO doctorDTO, BindingResult bindingResult, ModelAndView modelAndView) throws IOException {
+        if(bindingResult.hasErrors()){
+            modelAndView.addObject("fail",doctorDTO);
+            modelAndView.setViewName("DoctorForm");
+            List<ObjectError> objectError=bindingResult.getAllErrors();
+                System.out.println(objectError);
+
+        }else {
+            byte[] bytes=multipartFile.getBytes();
+            Path path=Paths.get("D:\\DocProfile\\"+doctorDTO.getName()+System.currentTimeMillis()+".jpg");
+            Files.write(path,bytes);
+            String imageName=path.getFileName().toString();
+            doctorDTO.setProfile(imageName);
+            modelAndView.addObject("success",doctorDTO);
+            modelAndView.setViewName("Home");
+            hospitalService.saveDetails(doctorDTO);
+        }
+        return modelAndView;
+    }
+
+    @RequestMapping("/viewdetail")
+    public ModelAndView viewDetail(ModelAndView modelAndView){
+        List<DoctorDTO> list=hospitalService.viewDetail();
+        if (list.isEmpty()){
+            log.info("returning null");
+        }
+        modelAndView.addObject("show",list);
+        modelAndView.setViewName("Details");
         return modelAndView;
     }
 
