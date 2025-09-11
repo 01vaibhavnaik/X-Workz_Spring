@@ -1,6 +1,6 @@
 <%@ page isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<html>
+<html xmlns:c="http://www.w3.org/1999/XSL/Transform">
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -32,6 +32,7 @@
                        placeholder="Enter your name">
                 <span id="nameErrorId" class="text-danger"></span>
             </div>
+
 
             <div class="mb-3">
                 <label for="emailId" class="form-label text-light">Email Address</label>
