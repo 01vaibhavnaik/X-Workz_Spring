@@ -2,17 +2,21 @@ package com.xworkz.page.controller;
 
 import com.xworkz.page.dto.SignUpDTO;
 import com.xworkz.page.service.SignUpService;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -29,17 +33,17 @@ public class XworkzController {
     SignUpService signUpService;
 
     @RequestMapping("/signup")
-    public ModelAndView getdetail(@RequestParam("image") MultipartFile multipartFile,@Valid SignUpDTO signUpDTO, BindingResult bindingResult, ModelAndView modelAndView) throws IOException {
+    public ModelAndView getdetail(@RequestParam("image") MultipartFile multipartFile, @Valid SignUpDTO signUpDTO, BindingResult bindingResult, ModelAndView modelAndView) throws IOException {
         if (bindingResult.hasErrors()) {
             modelAndView.addObject("errors", bindingResult.getAllErrors());
             modelAndView.setViewName("SignIn");
             return modelAndView;
         }
 
-        byte[] bytes=multipartFile.getBytes();
-        Path path= Paths.get("D:\\ImageData\\"+signUpDTO.getName()+System.currentTimeMillis()+".jpg");
-        Files.write(path,bytes);
-        String imageName=path.getFileName().toString();
+        byte[] bytes = multipartFile.getBytes();
+        Path path = Paths.get("D:\\ImageData\\" + signUpDTO.getName() + System.currentTimeMillis() + ".jpg");
+        Files.write(path, bytes);
+        String imageName = path.getFileName().toString();
         signUpDTO.setImagepath(imageName);
         signUpService.getSignUp(signUpDTO);
         modelAndView.setViewName("SignIn");
@@ -48,14 +52,13 @@ public class XworkzController {
 
 
     @RequestMapping("/signin")
-    public ModelAndView getdetail( @Valid String email, String password, ModelAndView modelAndView, HttpSession session) {
+    public ModelAndView getdetail(@Valid String email, String password, ModelAndView modelAndView, HttpSession session) {
         SignUpDTO signUpDTO;
         signUpDTO = signUpService.getSignin(email, password);
         if (signUpDTO.getEmail() == null) {
             modelAndView.addObject("result", "invalid password");
             modelAndView.setViewName("SignIn");
-        }
-        else if (signUpDTO.getEmail().equals("Locked")) {
+        } else if (signUpDTO.getEmail().equals("Locked")) {
             modelAndView.addObject("result", "your account has locked");
             modelAndView.setViewName("SignIn");
         }
@@ -66,8 +69,7 @@ public class XworkzController {
         else if (signUpDTO.getEmail().equals("notFound")) {
             modelAndView.addObject("result", "not found");
             modelAndView.setViewName("SignIn");
-        }
-        else {
+        } else {
             session.setAttribute("userSigInData", signUpDTO);
             modelAndView.addObject("results", signUpDTO);
             modelAndView.setViewName("Home");
@@ -77,15 +79,14 @@ public class XworkzController {
     }
 
 
-
     @RequestMapping("/forgotpass")
     public ModelAndView forgotpass(@Valid String email, String password, ModelAndView modelAndView) {
         boolean results = signUpService.forgotpass(email, password);
         if (!results)
-            modelAndView.addObject("results",results);
-            modelAndView.setViewName("Home");
-            return modelAndView;
-        }
+            modelAndView.addObject("results", results);
+        modelAndView.setViewName("SignIn");
+        return modelAndView;
+    }
 
     @RequestMapping("/userdetail")
     public ModelAndView userDetail(ModelAndView modelAndView, HttpSession session) {
@@ -101,6 +102,5 @@ public class XworkzController {
         session.setAttribute("userSigInData", signUpDTO);
         return "redirect:/userdetail";
     }
-
 
 }
