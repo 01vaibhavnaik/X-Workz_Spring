@@ -22,7 +22,7 @@
     <div class="card shadow-lg border-0 rounded-4 bg-white text-dark p-4 bg-transparent" style="max-width: 420px; width: 100%;">
         <h2 class="text-center fw-bold text-primary mb-4">LOG IN</h2>
 
-        <form action="signin" method="get">
+        <form action="signin" method="Post">
             <div class="mb-3">
                 <label for="emailId" class="form-label">Email address</label>
                 <input type="email" class="form-control" id="emailId" name="email"
