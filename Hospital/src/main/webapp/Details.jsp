@@ -10,15 +10,19 @@
     <tr>
         <th>ID</th>
         <th>Name</th>
-        <th>Specialization</th>
+        <th>Email</th>
+        <th>Profile</th>
     </tr>
     <c:forEach var="doctor" items="${show}">
         <tr>
             <td>${doctor.docid}</td>
             <td>${doctor.name}</td>
             <td>${doctor.email}</td>
+            <td>
+                <img src="download?fileName=${doctor.profile}" width="100" height="100">            </td>
         </tr>
     </c:forEach>
 </table>
 </body>
 </html>
+
