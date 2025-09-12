@@ -19,7 +19,8 @@
             <td>${doctor.name}</td>
             <td>${doctor.email}</td>
             <td>
-                <img src="download?fileName=${doctor.profile}" width="100" height="100">            </td>
+                <img src="download?fileName=${doctor.profile}" width="100" height="100">
+            </td>
         </tr>
     </c:forEach>
 </table>
