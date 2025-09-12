@@ -4,19 +4,23 @@ import com.xworkz.hospital.dto.DoctorDTO;
 import com.xworkz.hospital.entity.HospitalEntity;
 import com.xworkz.hospital.service.HospitalService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -97,8 +101,19 @@ public class HospitalController {
         }
         modelAndView.addObject("show",list);
         modelAndView.setViewName("Details");
+        System.out.println(list);
         return modelAndView;
     }
 
+    @GetMapping("/download")
+    public void download(HttpServletResponse response, @RequestParam String fileName) throws IOException {
+
+        response.setContentType("imagae/jpeg");
+        File file = new File("D:\\DocProfile\\" + fileName);
+        InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
+        ServletOutputStream servletOutputStream = response.getOutputStream();
+        IOUtils.copy(inputStream, servletOutputStream);
+        response.flushBuffer();
+    }
 
 }
