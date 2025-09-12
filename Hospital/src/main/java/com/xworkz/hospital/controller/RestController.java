@@ -20,7 +20,7 @@ public class RestController {
     if (count == 0) {
         return "Not Valid Email";
     } else {
-        return "Valid Email ";
+        return "";
     }
 }
 }
