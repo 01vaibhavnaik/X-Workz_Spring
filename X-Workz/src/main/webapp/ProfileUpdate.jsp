@@ -25,14 +25,14 @@
         </c:if>
         <h3 class="text-center fst-italic text-light mb-4">Update Profile</h3>
 
-        <form action="updateprofile" method="POST"  >
+        <form action="updateprofile" method="POST"  enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="nameId" class="form-label text-light">Full Name</label>
                 <input type="text" minlength="0" maxlength="25" class="form-control" oninput="validateName()" id="nameId" name="name" value="${dto.name}" required
                        placeholder="Enter your name">
                 <span id="nameErrorId" class="text-danger"></span>
             </div>
-<img src="download?fileName=${userSigInData.imagepath}" width="100" height="100">
+            <img src="download?fileName=${userSigInData.imagepath}" width="100" height="100">
 
             <div class="mb-3">
                 <label for="emailId" class="form-label text-light">Email Address</label>
@@ -58,6 +58,10 @@
                 <input type="text" class="form-control" id="addressId" name="address" value="${dto.address}" required
                        placeholder="Enter your name">
             </div>
+            <br>
+            <input type="file" name="image" value="Choose file">
+            <br>
+            <br>
 
             <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="termsId" required>
