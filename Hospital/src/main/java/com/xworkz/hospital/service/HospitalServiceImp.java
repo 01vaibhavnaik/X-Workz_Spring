@@ -2,9 +2,7 @@ package com.xworkz.hospital.service;
 
 import com.xworkz.hospital.dto.DoctorDTO;
 import com.xworkz.hospital.entity.DoctorEntity;
-import com.xworkz.hospital.entity.HospitalEntity;
 import com.xworkz.hospital.repository.HospitalRepository;
-import com.xworkz.hospital.repository.HospitalRepositoryImp;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -75,11 +73,11 @@ public class HospitalServiceImp implements HospitalService {
     @Override
     public List<DoctorDTO> viewDetail() {
 
-        List<DoctorEntity> doctorEntities = new HospitalRepositoryImp().viewDetail();
-
-        if (doctorEntities.isEmpty()){
+        List<DoctorEntity> doctorEntities = hospitalRepository.viewDetail();
+        if (doctorEntities == null){
             return null;
         }
+        System.out.println(doctorEntities);
 
         List<DoctorDTO> doctorDTOs = new ArrayList<>();
         for (DoctorEntity entity : doctorEntities) {
