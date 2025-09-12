@@ -77,7 +77,6 @@ public class HospitalServiceImp implements HospitalService {
         if (doctorEntities == null){
             return null;
         }
-        System.out.println(doctorEntities);
 
         List<DoctorDTO> doctorDTOs = new ArrayList<>();
         for (DoctorEntity entity : doctorEntities) {
@@ -88,6 +87,7 @@ public class HospitalServiceImp implements HospitalService {
             dto.setSpecialist(entity.getSpecialist());
             dto.setAge(entity.getAge());
             dto.setAddress(entity.getAddress());
+            dto.setProfile(entity.getProfile());
             doctorDTOs.add(dto);
         }
 

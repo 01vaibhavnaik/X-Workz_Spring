@@ -49,7 +49,6 @@ public class HospitalRepositoryImp implements HospitalRepository {
         EntityManager entityManager = null;
         EntityTransaction entityTransaction = null;
         try {
-            System.out.println("Emf created");
             entityManager = entityManagerFactory.createEntityManager();
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
