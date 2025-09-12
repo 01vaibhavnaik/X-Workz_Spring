@@ -95,6 +95,7 @@ public class SignUpServiceImp implements SignUpService {
         signUpEntity.setAge(signUpDTO.getAge());
         signUpEntity.setGender(signUpDTO.getGender());
         signUpEntity.setAddress(signUpDTO.getAddress());
+        signUpEntity.setImagepath(signUpDTO.getImagepath());
         signUpRepository.updateprofile(signUpEntity);
         return false;
     }
