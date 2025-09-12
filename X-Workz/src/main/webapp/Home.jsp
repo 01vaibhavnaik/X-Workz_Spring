@@ -25,7 +25,6 @@
 
 
 <div class="container mt-5">
-
     <c:choose>
 
         <c:when test="${result eq 'fail'}">
@@ -33,8 +32,6 @@
                 ❌ Login Failed! Please try again.
             </div>
         </c:when>
-
-
         <c:otherwise>
             <div class="card text-center shadow-lg border-0 rounded-4 overflow-hidden">
 
@@ -49,8 +46,6 @@
             </div>
         </c:otherwise>
     </c:choose>
-
 </div>
-
 </body>
 </html>
