@@ -3,8 +3,7 @@
     <meta charset="UTF-8">
     <title>Navbar with Sidebar</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="text-dark"
       style="background: url('img_2.png') no-repeat center center fixed;
@@ -19,31 +18,38 @@
 
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <div class="d-flex gap-2">
-                <a href="DoctorInfo.jsp" class="btn btn-success">Profile</a>
+                <a href="DoctorInfo.jsp" class="btn btn-light btn-sm">Profile</a>
             </div>
         </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
     </div>
 </nav>
 
-
 <div class="container-fluid">
     <div class="row">
-        <div class="col-3 col-md-2 bg-primary bg-opacity-10 text-white min-vh-100 p-3">
-            <h5 class="mb-3">Menu</h5>
+
+        <div class="col-12 col-md-3 col-lg-2 bg-primary bg-opacity-10 min-vh-100 p-3">
+            <h5 class="text-primary fw-bold mb-4">Menu</h5>
             <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link text-white fw-bold" href="DoctorInfo.jsp">Doctor</a>
-                    <a class="nav-link text-white fw-bold" href="viewdetail">View</a>
+                <li class="nav-item mb-2">
+                    <a class="nav-link text-dark text-center fw-semibold bg-light" href="DoctorInfo.jsp">Doctor
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link text-dark text-center fw-semibold bg-light" href="viewdetail">View
+                    </a>
                 </li>
             </ul>
         </div>
-
-        <div class="col-9 col-md-10 text-center py-5">
-            <h1 class="text-primary">Welcome</h1>
+        <div class="col-12 col-md-9 col-lg-10 d-flex flex-column align-items-center justify-content-center py-5">
+            <h1 class="text-primary fw-bold">Welcome</h1>
             <p class="lead text-secondary">Caring for you with compassion and excellence.</p>
         </div>
     </div>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
