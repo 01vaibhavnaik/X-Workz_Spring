@@ -120,6 +120,7 @@ public class SignUpRepositoryImp implements SignUpRepository {
             query.setParameter("name", entity.getName());
             query.setParameter("age", entity.getAge());
             query.setParameter("address", entity.getAddress());
+            query.setParameter("imagepath",entity.getImagepath());
             query.executeUpdate();
             entityTransaction.commit();
         } catch (Exception e) {
