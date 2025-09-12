@@ -15,30 +15,30 @@ import java.util.List;
 
 @Repository
 @Slf4j
-public class HospitalRepositoryImp implements HospitalRepository{
+public class HospitalRepositoryImp implements HospitalRepository {
 
     @Autowired
     EntityManagerFactory entityManagerFactory;
 
     @Override
     public long getDetail(String email) {
-        EntityManager entityManager=null;
-        EntityTransaction entityTransaction=null;
-        long count =0;
+        EntityManager entityManager = null;
+        EntityTransaction entityTransaction = null;
+        long count = 0;
         try {
             entityManager = entityManagerFactory.createEntityManager();
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
-            Query query= entityManager.createNamedQuery("Counts");
-            query.setParameter("email",email);
-            count =(long) query.getSingleResult();
+            Query query = entityManager.createNamedQuery("Counts");
+            query.setParameter("email", email);
+            count = (long) query.getSingleResult();
             entityTransaction.commit();
             return count;
-        }catch (Exception e){
-            if(entityTransaction.isActive()){
+        } catch (Exception e) {
+            if (entityTransaction.isActive()) {
                 entityTransaction.rollback();
             }
-        }finally {
+        } finally {
             entityManager.close();
         }
         return count;
@@ -46,43 +46,38 @@ public class HospitalRepositoryImp implements HospitalRepository{
 
     @Override
     public void saveDetails(DoctorEntity doctorEntity) {
-        EntityManager entityManager=null;
-        EntityTransaction entityTransaction=null;
+        EntityManager entityManager = null;
+        EntityTransaction entityTransaction = null;
         try {
+            System.out.println("Emf created");
             entityManager = entityManagerFactory.createEntityManager();
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
             entityManager.persist(doctorEntity);
             entityTransaction.commit();
 
-        }catch (Exception e){
-            if (entityTransaction.isActive()){
+        } catch (Exception e) {
+            if (entityTransaction.isActive()) {
                 entityTransaction.rollback();
             }
-        }finally {
+        } finally {
             entityManager.close();
         }
     }
 
     @Override
     public List<DoctorEntity> viewDetail() {
-        log.info("Running viewDetails");
+
         EntityManager entityManager = null;
         EntityTransaction entityTransaction=null;
         List<DoctorEntity> list = null;
         try {
-            if (entityManagerFactory == null){
-                System.out.println("emf is null");
-                return list;
-            }
-            System.out.println("Entered try block");
             entityManager = entityManagerFactory.createEntityManager();
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
-            System.out.println("Transaction beginned");
+
             Query query = entityManager.createNamedQuery("viewdetail");
             list = query.getResultList();
-            System.out.println("Executed query ");
 
         }catch (Exception e){
             if (entityTransaction.isActive()){
@@ -95,6 +90,9 @@ public class HospitalRepositoryImp implements HospitalRepository{
 
         return list;
     }
+
+
+
 
 
 }
