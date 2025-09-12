@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -91,18 +92,24 @@ public class XworkzController {
     @RequestMapping("/userdetail")
     public ModelAndView userDetail(ModelAndView modelAndView, HttpSession session) {
         SignUpDTO signUpDTO = (SignUpDTO) session.getAttribute("userSigInData");
+        System.out.println(signUpDTO);
         modelAndView.addObject("dto", signUpDTO);
         modelAndView.setViewName("ProfileUpdate");
         return modelAndView;
     }
 
-    @RequestMapping("/updateprofile")
-    public String updateProfile(@Valid SignUpDTO signUpDTO, HttpSession session) {
+    @PostMapping("/updateprofile")
+    public String updateProfile(@RequestParam("image") MultipartFile multipartFile,@Valid SignUpDTO signUpDTO, HttpSession session) throws IOException {
+        byte[] bytes = multipartFile.getBytes();
+        Path path = Paths.get("D:\\ImageData\\" + signUpDTO.getName() + System.currentTimeMillis() + ".jpg");
+        Files.write(path, bytes);
+        String imageName = path.getFileName().toString();
+        signUpDTO.setImagepath(imageName);
         signUpService.updateprofile(signUpDTO);
         session.setAttribute("userSigInData", signUpDTO);
-        session.setAttribute("name",signUpDTO.getName());
-       String name =(String) session.getAttribute("name");
-       session.removeAttribute("name");
+//       session.setAttribute("name",signUpDTO.getName());
+//       String name =(String) session.getAttribute("name");
+//       session.removeAttribute("name");
         return "redirect:/userdetail";
     }
 
@@ -114,7 +121,6 @@ public class XworkzController {
         InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
         ServletOutputStream servletOutputStream = response.getOutputStream();
         IOUtils.copy(inputStream, servletOutputStream);
-
         response.flushBuffer();
     }
 
