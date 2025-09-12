@@ -92,7 +92,7 @@ public class HospitalController {
     @RequestMapping("/viewdetail")
     public ModelAndView viewDetail(ModelAndView modelAndView){
         List<DoctorDTO> list=hospitalService.viewDetail();
-        if (list.isEmpty()){
+        if (list == null){
             log.info("returning null");
         }
         modelAndView.addObject("show",list);
