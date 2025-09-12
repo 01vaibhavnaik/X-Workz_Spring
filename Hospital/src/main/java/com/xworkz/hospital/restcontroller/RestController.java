@@ -1,4 +1,4 @@
-package com.xworkz.hospital.controller;
+package com.xworkz.hospital.restcontroller;
 
 import com.xworkz.hospital.service.HospitalService;
 import lombok.extern.slf4j.Slf4j;
