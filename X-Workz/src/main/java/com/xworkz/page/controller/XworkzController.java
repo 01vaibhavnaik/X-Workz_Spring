@@ -100,7 +100,22 @@ public class XworkzController {
     public String updateProfile(@Valid SignUpDTO signUpDTO, HttpSession session) {
         signUpService.updateprofile(signUpDTO);
         session.setAttribute("userSigInData", signUpDTO);
+        session.setAttribute("name",signUpDTO.getName());
+       String name =(String) session.getAttribute("name");
+       session.removeAttribute("name");
         return "redirect:/userdetail";
+    }
+
+    @GetMapping("/download")
+    public void download(HttpServletResponse response, @RequestParam String fileName) throws IOException {
+
+        response.setContentType("imagae/jpeg");
+        File file = new File("D:\\ImageData\\" + fileName);
+        InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
+        ServletOutputStream servletOutputStream = response.getOutputStream();
+        IOUtils.copy(inputStream, servletOutputStream);
+
+        response.flushBuffer();
     }
 
 }

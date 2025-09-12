@@ -32,7 +32,7 @@
                        placeholder="Enter your name">
                 <span id="nameErrorId" class="text-danger"></span>
             </div>
-
+<img src="download?fileName=${userSigInData.imagepath}" width="100" height="100">
 
             <div class="mb-3">
                 <label for="emailId" class="form-label text-light">Email Address</label>
