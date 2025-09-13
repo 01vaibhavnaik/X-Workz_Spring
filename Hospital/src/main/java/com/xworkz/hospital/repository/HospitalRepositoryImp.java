@@ -90,8 +90,26 @@ public class HospitalRepositoryImp implements HospitalRepository {
         return list;
     }
 
-
-
-
+    @Override
+    public void saveotp(HospitalEntity entity) {
+        EntityManager entityManager=null;
+        EntityTransaction entityTransaction=null;
+        HospitalEntity hospital=null;
+        try{
+            entityManager=entityManagerFactory.createEntityManager();
+            entityTransaction=entityManager.getTransaction();
+            entityTransaction.begin();
+            entityManager.merge(entity);
+            System.out.println("Hiiii repo"+hospital);
+            entityTransaction.commit();
+        }catch (Exception e){
+            if (entityTransaction.isActive()){
+                entityTransaction.rollback();
+            }
+            e.printStackTrace();
+        }finally {
+            entityManager.close();
+        }
+    }
 
 }
