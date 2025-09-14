@@ -2,6 +2,7 @@ package com.xworkz.hospital.service;
 
 import com.xworkz.hospital.dto.DoctorDTO;
 import com.xworkz.hospital.entity.DoctorEntity;
+import com.xworkz.hospital.entity.HospitalEntity;
 import com.xworkz.hospital.repository.HospitalRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Service
@@ -26,6 +28,8 @@ public class HospitalServiceImp implements HospitalService {
     public int getDetail(String email) {
         return Math.toIntExact(hospitalRepository.getDetail(email));
     }
+
+
     private String generatedOtp=" ";
     @Override
     public void getOtp(String email) {
@@ -38,9 +42,23 @@ public class HospitalServiceImp implements HospitalService {
             }
             generatedOtp = builder.toString();
             setEmail(email, "Dear User,\n\nThe OTP for you is: " + generatedOtp);
+            LocalDateTime localDateTime = LocalDateTime.now().plusSeconds(120);
+            HospitalEntity entity=new HospitalEntity();
+            entity.setOtpnum(generatedOtp);
+            entity.setTime(localDateTime);
+            hospitalRepository.saveotp(entity);
+
+
+
         }
 
     }
+
+//    public HospitalEntity saveotp(){
+//        HospitalEntity entity=hospitalRepository.saveotp();
+//        System.out.println("kkk"+entity);
+//        return entity;
+//    }
 
     @Override
     public boolean check(String otp) {
