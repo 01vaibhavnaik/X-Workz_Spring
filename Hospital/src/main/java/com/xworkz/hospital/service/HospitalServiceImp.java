@@ -4,6 +4,7 @@ import com.xworkz.hospital.dto.DoctorDTO;
 import com.xworkz.hospital.entity.DoctorEntity;
 import com.xworkz.hospital.entity.HospitalEntity;
 import com.xworkz.hospital.repository.HospitalRepository;
+import com.xworkz.hospital.repository.HospitalRepositoryImp;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,35 +41,40 @@ public class HospitalServiceImp implements HospitalService {
             for (int i = 0; i < 6; i++) {
                 builder.append(random.nextInt(10));
             }
+
             generatedOtp = builder.toString();
             setEmail(email, "Dear User,\n\nThe OTP for you is: " + generatedOtp);
             LocalDateTime localDateTime = LocalDateTime.now().plusSeconds(120);
+            HospitalEntity emailname=hospitalRepository.findByEmail(email);
             HospitalEntity entity=new HospitalEntity();
+            entity.setEmail(email);
             entity.setOtpnum(generatedOtp);
             entity.setTime(localDateTime);
-            hospitalRepository.saveotp(entity);
-
-
-
+            if(email.equals(emailname.getEmail())){
+                hospitalRepository.update(entity);
+            }
         }
+
 
     }
 
-//    public HospitalEntity saveotp(){
-//        HospitalEntity entity=hospitalRepository.saveotp();
-//        System.out.println("kkk"+entity);
-//        return entity;
-//    }
+
+
+
 
     @Override
-    public boolean check(String otp) {
-        if(otp.equals(generatedOtp)){
-            generatedOtp="";
-            return true;
+    public boolean logIn(String otp,String email) {
+        HospitalEntity entity=hospitalRepository.findByEmail(email);
+        LocalDateTime localDateTime = LocalDateTime.now();
+        if(localDateTime.isAfter(entity.getTime())){
+
+            return false;
         }else
         {
-            return false;
+            if(otp.equals(entity.getOtpnum()))
+            return true;
         }
+        return false;
     }
 
 
@@ -111,6 +117,7 @@ public class HospitalServiceImp implements HospitalService {
 
         return doctorDTOs;
     }
+
 
     private void setEmail(String recipientEmail,String body) {
         final String username = "vaibhavnaik32275@gmail.com";
