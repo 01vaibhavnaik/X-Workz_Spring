@@ -14,6 +14,8 @@ import java.time.LocalDateTime;
 @Entity
 @NamedQuery(name="findByEmail",query = "select e from HospitalEntity e ")
 @NamedQuery(name = "Counts",query = "select count(e) from HospitalEntity e where email=:email")
+@NamedQuery(name = "findEmail", query = "SELECT h FROM HospitalEntity h WHERE h.email = :email")
+@NamedQuery(name = "update",query = "update HospitalEntity e set e.otpnum=:otpnum,e.time=:time where email =:email")
 public class HospitalEntity {
 
     @Id

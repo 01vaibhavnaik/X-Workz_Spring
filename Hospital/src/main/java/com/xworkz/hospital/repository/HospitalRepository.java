@@ -10,6 +10,8 @@ public interface HospitalRepository {
     long getDetail(String email);
     void saveDetails(DoctorEntity doctorEntity);
     List<DoctorEntity> viewDetail();
-    void  saveotp(HospitalEntity hospitalEntity);
+    HospitalEntity findByEmail(String email);
+    void update(HospitalEntity entity);
+
 
 }
