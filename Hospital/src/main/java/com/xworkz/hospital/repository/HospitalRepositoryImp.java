@@ -91,16 +91,17 @@ public class HospitalRepositoryImp implements HospitalRepository {
     }
 
     @Override
-    public void saveotp(HospitalEntity entity) {
+    public HospitalEntity findByEmail(String email) {
         EntityManager entityManager=null;
         EntityTransaction entityTransaction=null;
-        HospitalEntity hospital=null;
+        HospitalEntity emailName=null;
         try{
             entityManager=entityManagerFactory.createEntityManager();
             entityTransaction=entityManager.getTransaction();
             entityTransaction.begin();
-            entityManager.merge(entity);
-            System.out.println("Hiiii repo"+hospital);
+            Query query= entityManager.createNamedQuery("findEmail");
+            query.setParameter("email",email);
+            emailName= (HospitalEntity) query.getSingleResult();
             entityTransaction.commit();
         }catch (Exception e){
             if (entityTransaction.isActive()){
@@ -110,6 +111,32 @@ public class HospitalRepositoryImp implements HospitalRepository {
         }finally {
             entityManager.close();
         }
+        return emailName;
     }
+
+    @Override
+    public void update(HospitalEntity entity) {
+        EntityManager entityManager=null;
+        EntityTransaction entityTransaction=null;
+        try {
+            entityManager=entityManagerFactory.createEntityManager();
+            entityTransaction=entityManager.getTransaction();
+            entityTransaction.begin();
+            Query query= entityManager.createNamedQuery("update");
+            query.setParameter("email",entity.getEmail());
+            query.setParameter("otpnum",entity.getOtpnum());
+            query.setParameter("time",entity.getTime());
+            query.executeUpdate();
+            entityTransaction.commit();
+
+        }catch (Exception e){
+            if (entityTransaction.isActive()){
+                entityTransaction.rollback();
+            }
+        }finally {
+           entityManager.close();
+        }
+    }
+
 
 }

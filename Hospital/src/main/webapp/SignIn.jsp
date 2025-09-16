@@ -33,7 +33,7 @@
             <div class="mb-3">
                 <label for="otpId" class="form-label">Enter OTP</label>
                 <div class="input-group">
-                    <input type="text" class="form-control" maxlength="6" id="otpId" name="otpname"
+                    <input type="text" class="form-control" maxlength="6" id="otpId" name="otpnum"
                            placeholder="Enter your OTP" >
                 </div>
                 <span id="OTPErrorId" class="text-danger small"></span>

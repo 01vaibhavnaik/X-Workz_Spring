@@ -8,7 +8,7 @@ import java.util.List;
 public interface HospitalService {
     int getDetail(String email);
     void getOtp(String email);
-    boolean check(String otp);
     void saveDetails(DoctorDTO doctorDTO);
     List<DoctorDTO> viewDetail();
+    boolean logIn(String otp,String email);
 }
