@@ -21,7 +21,7 @@
 
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <div class="d-flex gap-2">
-                <a href="UpdateDocInfo.jsp" class="btn btn-success">Update Details</a>
+                <a href="Home.jsp" class="btn btn-success">Home</a>
             </div>
         </div>
     </div>

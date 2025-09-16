@@ -48,14 +48,14 @@ public class HospitalController {
     }
 
     @RequestMapping("/signin")
-    public ModelAndView logIn(@RequestParam String otpname, @RequestParam String email, ModelAndView modelAndView) {
+    public ModelAndView logIn(@RequestParam String otpnum, @RequestParam String email, ModelAndView modelAndView) {
 
-        if (otpname == null || otpname.isEmpty()) {
+        if (otpnum == null || otpnum.isEmpty()) {
             modelAndView.addObject("result", "Enter Otp");
             modelAndView.addObject("email", email);
             modelAndView.setViewName("SignIn");
         } else {
-            boolean check = hospitalService.check(otpname);
+            boolean check = hospitalService.logIn(otpnum,email);
             if (check) {
 //
 //                httpSession.setAttribute("loggedIn", true);
@@ -78,7 +78,6 @@ public class HospitalController {
             modelAndView.addObject("fail",doctorDTO);
             modelAndView.setViewName("DoctorForm");
             List<ObjectError> objectError=bindingResult.getAllErrors();
-                System.out.println(objectError);
 
         }else {
             byte[] bytes=multipartFile.getBytes();
@@ -101,7 +100,6 @@ public class HospitalController {
         }
         modelAndView.addObject("show",list);
         modelAndView.setViewName("Details");
-        System.out.println(list);
         return modelAndView;
     }
 

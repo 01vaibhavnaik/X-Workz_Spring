@@ -9,7 +9,7 @@
       style="background: url('img_2.png') no-repeat center center fixed;
              background-size: cover;">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm fixed-top">
     <div class="container-fluid px-4">
         <a class="navbar-brand d-flex align-items-center" href="index.jsp">
             <img src="img_1.png" alt="Logo" width="100" height="35" class="me-2">
@@ -31,8 +31,8 @@
 <div class="container-fluid">
     <div class="row">
 
-        <div class="col-12 col-md-3 col-lg-2 bg-primary bg-opacity-10 min-vh-100 p-3">
-            <h5 class="text-primary fw-bold mb-4">Menu</h5>
+        <div class="col-12 col-md-3 col-lg-2 bg-primary bg-opacity-10 min-vh-100 pt-5">
+            <h5 class="text-primary fw-bold mb-4 pt-5">Menu</h5>
             <ul class="nav flex-column">
                 <li class="nav-item mb-2">
                     <a class="nav-link text-dark text-center fw-semibold bg-light" href="DoctorInfo.jsp">Doctor
