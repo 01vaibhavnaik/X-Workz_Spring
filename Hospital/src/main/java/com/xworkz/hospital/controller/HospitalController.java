@@ -1,6 +1,7 @@
 package com.xworkz.hospital.controller;
 
 import com.xworkz.hospital.dto.DoctorDTO;
+import com.xworkz.hospital.dto.TimeSlotDTO;
 import com.xworkz.hospital.entity.HospitalEntity;
 import com.xworkz.hospital.service.HospitalService;
 import lombok.extern.slf4j.Slf4j;
@@ -112,6 +113,12 @@ public class HospitalController {
         ServletOutputStream servletOutputStream = response.getOutputStream();
         IOUtils.copy(inputStream, servletOutputStream);
         response.flushBuffer();
+    }
+
+    @RequestMapping("/slot")
+    public void saveSlot(TimeSlotDTO slotDTO){
+        hospitalService.saveSlot(slotDTO);
+
     }
 
 }
