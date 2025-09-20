@@ -42,6 +42,10 @@
                     <a class="nav-link text-dark text-center fw-semibold bg-light" href="viewdetail">View
                     </a>
                 </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link text-dark text-center fw-semibold bg-light" href="Slot.jsp">Slot
+                    </a>
+                </li>
             </ul>
         </div>
         <div class="col-12 col-md-9 col-lg-10 d-flex flex-column align-items-center justify-content-center py-5">
