@@ -1,10 +1,11 @@
 package com.xworkz.hospital.service;
 
 import com.xworkz.hospital.dto.DoctorDTO;
+import com.xworkz.hospital.dto.TimeSlotDTO;
 import com.xworkz.hospital.entity.DoctorEntity;
 import com.xworkz.hospital.entity.HospitalEntity;
+import com.xworkz.hospital.entity.TimeSlotEntity;
 import com.xworkz.hospital.repository.HospitalRepository;
-import com.xworkz.hospital.repository.HospitalRepositoryImp;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,6 @@ import java.util.*;
 public class HospitalServiceImp implements HospitalService {
 @Autowired
     HospitalRepository hospitalRepository;
-
 
     @Override
     public int getDetail(String email) {
@@ -54,13 +54,7 @@ public class HospitalServiceImp implements HospitalService {
                 hospitalRepository.update(entity);
             }
         }
-
-
     }
-
-
-
-
 
     @Override
     public boolean logIn(String otp,String email) {
@@ -75,6 +69,14 @@ public class HospitalServiceImp implements HospitalService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void saveSlot(TimeSlotDTO slotDTO) {
+        TimeSlotEntity entity=new TimeSlotEntity();
+        entity.setSlotstart(slotDTO.getSlotstart());
+        entity.setSlotend(slotDTO.getSlotend());
+        hospitalRepository.saveSlot(entity);
     }
 
 
