@@ -18,11 +18,12 @@ import javax.sql.DataSource;
 @Configuration
 @ComponentScan(basePackages = "com.xworkz.page")
 @EnableWebMvc
-public class XworkzConfiguration implements WebMvcConfigurer {
+public class    XworkzConfiguration implements WebMvcConfigurer {
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }
+
 
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
